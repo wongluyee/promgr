@@ -1,1 +1,5 @@
-<p>Hi, this is the calendar/tasks page</p>
+<div class="container mt-3">
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+</div>
