@@ -79,3 +79,4 @@ end
 
 # custom gems
 gem "cloudinary"
+gem "faker"
