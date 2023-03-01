@@ -79,3 +79,4 @@ end
 
 # custom gems
 gem "cloudinary"
+gem "simple_calendar", "~> 2.4"

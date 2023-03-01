@@ -1,1 +1,11 @@
-<p>Hi, this is the calendar/tasks page</p>
+<div class="container mt-3">
+  <h1>Calendar/Tasks</h1>
+  <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
+    <div class="d-flex flex-column">
+      <%= date.day %>
+      <% tasks.each do |task| %>
+        <p class="badge rounded-pill text-bg-primary"><%= task.task_title %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
