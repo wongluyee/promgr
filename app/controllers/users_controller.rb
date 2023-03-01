@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def dashboard
-    @users = policy_scope(User)
+    # @users = policy_scope(User)
     @user = current_user
   end
 end
