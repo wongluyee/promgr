@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  def index
+  def dashboard
     @users = policy_scope(User)
-    authorize @users
+    @user = current_user
   end
 end
