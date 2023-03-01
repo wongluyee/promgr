@@ -1,5 +1,5 @@
 <div class="container border border-dark daily">
-<div class="d-flex flex-row col-12">
+  <div class="d-flex flex-row col-12">
     <div class="col mt-3">
        <h5>Date</h5>
        <% @timesheets.first(3).each do |timesheet| %>
@@ -18,5 +18,5 @@
           <li><%= timesheet.time_out.hour %>:0<%= timesheet.time_out.min %> p.m.</li>
         <% end %>
     </div>
-</div>
+  </div>
 </div>
