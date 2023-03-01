@@ -5,86 +5,10 @@
     <%= render 'shared/sidebar_employee' %>
   <% end %>
   <div class="parent col-10">
-    <div class="div1">
-      <%= render 'greeting' %>
-    </div>
-    <div class="div2">
-      <h4>Important</h4>
-      <h4>Tasks Done</h4>
-    </div>
-    <div class="div3">
-      <h4>Team</h4>
-      <h4>Overtime</h4>
-      <h2>80 Hrs</h2>
-    </div>
-    <div class="div4">
-      <h5>Team Overall Overtime/ Tasks by Month</h5>
-    </div>
-    <div class="team-overview p-4">
-      <div class= "d-flex justify-content-between align-items-center">
-        <h5> Team Overview</h5>
-        <button type="button" class="btn btn-primary">Primary</button>
-      </div>
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col" class="col-4"></th>
-              <th scope="col" class="col-2">
-                <p>Total overtime</p>
-                <p> this time</p>
-              </th>
-              <th scope="col" class="col-2">
-                <p>Ongoing</p>
-                <p>tasks</p>
-              </th>
-              <th scope="col" class="col-2">
-                <p>Completed</p>
-                <p>tasks</p>
-              </th>
-              <th scope="col" class="col-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                <p>Joe</p>
-                <p>Lead dev</p>
-              </th>
-              <td>2hrs</td>
-              <td>2 tasks</td>
-              <td>10 tasks</td>
-              <td>
-                <button type="button" class="btn btn-secondary">View Profile</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <p>Josh</p>
-                <p>Backend dev</p>
-              </th>
-              <td>2hrs</td>
-              <td>2 tasks</td>
-              <td>10 tasks</td>
-              <td>
-                <button type="button" class="btn btn-secondary">View Profile</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <p>Luye</p>
-                <p>Frontend dev</p>
-              </th>
-              <td>2hrs</td>
-              <td>2 tasks</td>
-              <td>10 tasks</td>
-              <td>
-                <button type="button" class="btn btn-secondary">View Profile</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <%= render 'users/manager/greeting' %>
+    <%= render 'users/manager/tasks_done' %>
+    <%= render 'users/manager/team_overtime' %>
+    <%= render 'users/manager/chart' %>
+    <%= render 'users/manager/team_overview' %>
   </div>
 </div>
