@@ -1,4 +1,13 @@
-<div class="col-2 bg-light h-100 position-sticky top-0 shadow-sm">
+<div class="sidebar col-2 bg-light position-sticky top-0 shadow-sm">
+  <div class="d-flex">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar" %>
+    <div class="info">
+      <%# <%= @user.name %>
+      <p>El Mehdi</p>
+      <%# <%= @user.job_title %>
+      <p>Manager</p>
+    </div>
+  </div>
   <div class="side-bar-items m-3">
     <%= link_to root_path, class: "text-decoration-none text-dark" do  %>
       <h6><i class="fa-solid fa-house"></i> Home</h6>
