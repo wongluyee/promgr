@@ -79,4 +79,5 @@ end
 
 # custom gems
 gem "cloudinary"
+gem "faker"
 gem "simple_calendar", "~> 2.4"
