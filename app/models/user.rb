@@ -12,5 +12,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :job_title, presence: true
-  validates :is_manager, presence: true
+  # validates :is_manager, presence: true
+  with_options if: :is_manager? do |manager|
+    manager.validates :name, presence: true
+    manager.validates :job_title, presence: true
+  end
 end
