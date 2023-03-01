@@ -1,12 +1,17 @@
-<div class="container text-center border border-dark">
-  <div class="row align-items-start">
+<div class="container border border-dark">
+  <div class="row">
     <div class="col">
-    Date
+       <h4>Date</h4>
+      <ul>
+        <% @timesheet.each do |daily| %>
+        <li><%= timesheets.date %></li>
+        <% end %>
+      </ul>
     </div>
-    <div>
+    <div class="col">
     Clock in
     </div>
-    <div>
+    <div class="col">
     Clock out
     </div>
   </div>
