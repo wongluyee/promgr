@@ -34,7 +34,7 @@ Task.create!(
   priority: "High",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
   status: "incomplete",
-  user: users.sample
+
 )
 Task.create!(
   task_title: "Code the home page",
@@ -42,7 +42,7 @@ Task.create!(
   priority: "Medium",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
   status: "incomplete",
-  user: users.sample
+
 )
 Task.create!(
   task_title: "Code the about page",
@@ -50,7 +50,7 @@ Task.create!(
   priority: "Medium",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
   status: "copmleted",
-  user: users.sample
+
 )
 Task.create!(
   task_title: "Design the logo",
@@ -58,7 +58,7 @@ Task.create!(
   priority: "High",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
   status: "incomplete",
-  user: users.sample
+
 )
 Task.create!(
   task_title: "Design the wireframe",
@@ -66,7 +66,7 @@ Task.create!(
   priority: "High",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
   status: "incomplete",
-  user: users.sample
+
 )
 tasks << Task.all
 puts 'Creating user tasks...'
@@ -78,15 +78,19 @@ puts 'Creating user tasks...'
 end
 
 puts 'Creating timesheets...'
-5.times do
-  Timesheet.create!(
-    user: users.sample,
-    attendance: "working",
-    comment: "Working on the project",
-    time_in: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-    time_out: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-  )
+User.all.foreach do |user|
+  31.times do |index|
+    Timesheet.create!(
+      user: user,
+      attendance: "working",
+      comment: "Working on the project",
+      time_in: DateTime.new(2023,2,index + 1,rand(7...10),rand(59),rand(59)),
+      time_out: DateTime.new(2023,2,index + 1,rand(18...22),rand(59),rand(59))
+    )
+  end
 end
+# DateTime.new(2001,2,3,4,5,6)
+
 
 puts 'Creating goals...'
 Goal.create(
