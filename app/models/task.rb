@@ -5,5 +5,4 @@ class Task < ApplicationRecord
 
   validates :task_title, presence: true
   validates :due_date, presence: true
-
 end
