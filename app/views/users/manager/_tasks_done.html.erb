@@ -1,3 +1,4 @@
 <div class="div2 ms-3">
   <h5>Tasks Done</h5>
+  <%= pie_chart Task.group(:status).count, donut: true %>
 </div>
