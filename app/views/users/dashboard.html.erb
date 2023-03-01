@@ -1,5 +1,9 @@
 <div class="row">
-  <%= render 'shared/sidebar_manager' %>
+  <% if current_user.is_manager? %>
+    <%= render 'shared/sidebar_manager' %>
+  <% else %>
+    <%= render 'shared/sidebar_employee' %>
+  <% end %>
   <%# right side %>
   <div class="parent col-10">
     <div class="div1">
