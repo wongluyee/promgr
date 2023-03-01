@@ -1,18 +1,22 @@
-<div class="container border border-dark">
+<div class="container border border-dark daily">
   <div class="row">
-    <div class="col">
-       <h4>Date</h4>
-      <ul>
-        <% @tasks.each do |d| %>
-        <li><%= timesheets.date %></li>
+    <div class="col mt-3">
+       <h3>Date</h3>
+       <% @timesheets.first(3).each do |timesheet| %>
+          <li><%= timesheet.time_in.year %>/<%= timesheet.time_in.month %>/<%= timesheet.time_in.day %></li>
         <% end %>
-      </ul>
     </div>
-    <div class="col">
-    Clock in
+    <div class="col mt-3">
+    <h3>Clock in</h3>
+        <% @timesheets.first(3).each do |timesheet| %>
+          </i><li><%= timesheet.time_in %></li>
+        <% end %>
     </div>
-    <div class="col">
-    Clock out
+    <div class="col mt-3">
+        <h3>Clock in</h3>
+          <% @timesheets.first(3).each do |timesheet| %>
+          <li><%= timesheet.time_out %></li>
+        <% end %>
     </div>
   </div>
 </div>

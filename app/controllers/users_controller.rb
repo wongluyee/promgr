@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def dashboard
+    # skip_authorization
     # @users = policy_scope(User)
     @user = current_user
   end
 
   def show
     @user = User.find(params[:id])
-    # authorize @user
+    @timesheets = @user.timesheets
+    authorize @user
   end
 end
