@@ -2,10 +2,8 @@
   <div class="d-flex">
     <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar" %>
     <div class="info">
-      <%# <%= @user.name %>
-      <p>Josh</p>
-      <%# <%= @user.job_title %>
-      <p>Backend Dev</p>
+      <p><%= @user.name %></p>
+      <p><%= @user.job_title %></p>
     </div>
   </div>
   <div class="side-bar-items m-3">
@@ -15,10 +13,10 @@
     <%= link_to tasks_path, class: "text-decoration-none text-dark" do  %>
       <h6><i class="fa-regular fa-calendar"></i> Calendar/Tasks</h6>
     <% end %>
-    <%= link_to goals_path, class: "text-decoration-none text-dark" do  %>
+    <%= link_to user_goals_path(@user), class: "text-decoration-none text-dark" do  %>
       <h6><i class="fa-solid fa-trophy"></i> My Goals</h6>
     <% end %>
-    <%= link_to timesheets_path, class: "text-decoration-none text-dark" do  %>
+    <%= link_to user_timesheets_path(@user), class: "text-decoration-none text-dark" do  %>
       <h6><i class="fa-regular fa-clock"></i> My Timesheets</h6>
     <% end %>
     <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "text-decoration-none text-dark" do  %>

@@ -5,5 +5,4 @@ class Goal < ApplicationRecord
   validates :description, presence: true
   validates :title, presence: true
   validates :status, presence: true
-
 end
