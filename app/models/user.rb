@@ -14,4 +14,5 @@ class User < ApplicationRecord
   validates :job_title, presence: true
   # validates :is_manager, presence: true
 
+  validates :is_manager, inclusion: { in: [true, false]}
 end
