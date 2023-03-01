@@ -1,0 +1,10 @@
+<div class="row">
+  <% if current_user.is_manager? %>
+    <%= render 'shared/sidebar_manager' %>
+  <% else %>
+    <%= render 'shared/sidebar_employee' %>
+  <% end %>
+  <div class="parent col-10">
+    <%= render 'shared/daily' %>
+  </div>
+</div>

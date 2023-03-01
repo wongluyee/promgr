@@ -40,4 +40,10 @@ class UsersController < ApplicationController
     end
     @employees_hash
   end
+
+  def show
+    @user = User.find(params[:id])
+    @timesheets = @user.timesheets
+    authorize @user
+  end
 end

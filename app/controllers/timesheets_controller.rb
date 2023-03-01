@@ -12,6 +12,7 @@ class TimesheetsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @timesheet = Timesheet.new(timesheet_params)
     @timesheet.user = current_user
     if @timesheet.save
