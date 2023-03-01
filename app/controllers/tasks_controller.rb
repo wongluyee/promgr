@@ -1,7 +1,35 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.where(
-      created_at: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week
-    )
+    @tasks = policy_scope(Task)
+  end
+
+  def new
+    @task = Task.new
+    @users = User.all
+    authorize @task
+  end
+
+  def create
+    @task = Task.new(task_params)
+    # @usertask = UserTask.new
+    # @usertask.task_id = @task.id
+    # if current_user.is_manager?
+    #   @usertask.user_id = params[:task][:user_id]
+    # else
+    #   @usertask.user_id = current_user.id
+    # end
+
+    authorize @task
+    if @task.save
+      redirect_to users_path
+    else
+      render "users/dashboard", status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:task_title, :description, :due_date, user_ids: [])
   end
 end

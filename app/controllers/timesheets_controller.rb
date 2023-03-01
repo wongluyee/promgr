@@ -37,5 +37,4 @@ class TimesheetsController < ApplicationController
   def timesheet_params
     params.require(:timesheet).permit(:time_in, :time_out, :attendance, :comment)
   end
-
 end
