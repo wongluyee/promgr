@@ -1,3 +1,4 @@
 <div class="div2 ms-3">
-  <h5>Tasks Done</h5>
+  <h5>Tasks Done <%= Task.where(status: "done").count %>/<%= Task.all.count %></h5>
+  <%= pie_chart Task.group(:status).count,colors: ['#52CD9F', '#BFBFBF'], donut: true %>
 </div>
