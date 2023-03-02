@@ -3,5 +3,5 @@ class Timesheet < ApplicationRecord
 
   validates :time_in, presence: true
   # validates :time_out, presence: true
-  validates :attendance, presence: true
+  # validates :attendance, presence: true
 end

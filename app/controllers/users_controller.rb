@@ -5,7 +5,8 @@ class UsersController < ApplicationController
     skip_authorization
     @users = policy_scope(User)
     @user = current_user
-    @timesheet = Timesheet.new
+    @timesheet_new = Timesheet.new
+    @timesheet = @user.timesheets.last
     @task = Task.new
     # To display "Tasks Done" donut pie chart
     @tasks_done = Task.where(status: "done").count
@@ -26,7 +27,11 @@ class UsersController < ApplicationController
     today = Date.today
     @absent_employee = []
     employees.each do |employee|
-      @absent_employee << employee.name if employee.timesheets.last.time_in.to_date != today
+      if employee.timesheets != []
+        if employee.timesheets.last.time_in.to_date != today
+          @absent_employee << employee.name
+        end
+      end
     end
     # 3. If all of them is true, show message "All of your team members are here today!"
     # 4. Else show message "#{user.name} is not yet here."
@@ -73,6 +78,5 @@ class UsersController < ApplicationController
     skip_authorization
     @goals = @user.goals
     # authorize @user
-    skip_authorization
   end
 end

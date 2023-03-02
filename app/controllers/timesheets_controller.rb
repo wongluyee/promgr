@@ -14,13 +14,12 @@ class TimesheetsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @timesheet = Timesheet.new(timesheet_params)
+    @timesheet = Timesheet.new
+    @timesheet.time_in = DateTime.now
     @timesheet.user = current_user
     authorize @timesheet
-    @timesheet.user = @user
     if @timesheet.save
-      redirect_to @dashboard
+      redirect_to dashboard_path
     else
       render "users/dashboard", status: :unprocessable_entity
     end
@@ -32,13 +31,15 @@ class TimesheetsController < ApplicationController
 
   def update
     @timesheet = Timesheet.find(params[:id])
+    @timesheet.time_out = DateTime.now
     @timesheet.update(timesheet_params)
-    redirect_to timesheet_path(@timesheet)
+    authorize @timesheet
+    redirect_to dashboard_path
   end
 
   private
 
   def timesheet_params
-    params.require(:timesheet).permit(:time_in, :time_out, :attendance, :comment)
+    params.require(:timesheet).permit(:time_in, :time_out)
   end
 end
