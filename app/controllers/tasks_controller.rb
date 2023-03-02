@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
     @tasks = policy_scope(Task)
+    @user = current_user
   end
 
   def new
