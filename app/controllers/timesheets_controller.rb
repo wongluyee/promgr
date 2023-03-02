@@ -1,10 +1,12 @@
 class TimesheetsController < ApplicationController
   def index
-    @timesheets = Timesheet.all
+    @timesheets = policy_scope(Timesheet)
+    authorize @timesheets
   end
 
   def show
     @timesheet = Timesheet.find(params[:id])
+    authorize @timesheet
   end
 
   def new
@@ -12,13 +14,14 @@ class TimesheetsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @timesheet = Timesheet.new(timesheet_params)
+    @timesheet = Timesheet.new
+    @timesheet.time_in = DateTime.now
     @timesheet.user = current_user
+    authorize @timesheet
     if @timesheet.save
-      redirect_to timesheet_path(@timesheet)
+      redirect_to dashboard_path
     else
-      render :new
+      render "users/dashboard", status: :unprocessable_entity
     end
   end
 
@@ -28,13 +31,15 @@ class TimesheetsController < ApplicationController
 
   def update
     @timesheet = Timesheet.find(params[:id])
+    @timesheet.time_out = DateTime.now
     @timesheet.update(timesheet_params)
-    redirect_to timesheet_path(@timesheet)
+    authorize @timesheet
+    redirect_to dashboard_path
   end
 
   private
 
   def timesheet_params
-    params.require(:timesheet).permit(:time_in, :time_out, :attendance, :comment)
+    params.require(:timesheet).permit(:time_in, :time_out)
   end
 end

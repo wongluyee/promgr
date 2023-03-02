@@ -2,20 +2,28 @@
   <div class="d-flex flex-row col-12">
     <div class="col my-3">
        <h5>Date</h5>
-       <% @timesheets.first(3).each do |timesheet| %>
-          <%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
+       <% @timesheets.all.each do |timesheet| %>
+         <li><%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
         <% end %>
     </div>
     <div class="col my-3">
     <h5>Clock in</h5>
-        <% @timesheets.first(3).each do |timesheet| %>
+        <% @timesheets.all.each do |timesheet| %>
+          <% if timesheet.time_in.nil? %>
+            <li>Missing</li>
+          <% else %>
           <li><%= timesheet.time_in.strftime('%l:%M %p') %></li>
+            <% end %>
         <% end %>
     </div>
     <div class="col my-3">
         <h5>Clock out</h5>
-          <% @timesheets.first(3).each do |timesheet| %>
+          <% @timesheets.all.each do |timesheet| %>
+          <% if timesheet.time_out.nil? %>
+            <li>Missing</li>
+          <% else %>
           <li><%= timesheet.time_out.strftime('%l:%M %p')  %></li>
+          <% end %>
         <% end %>
     </div>
   </div>

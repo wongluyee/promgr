@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     resources :goals, only: [:index, :create, :update]
-    resources :timesheets, only: [:index, :create, :update]
+    resources :timesheets, only: [:index]
     resources :user_tasks, only: [:create] do
       resources :tasks, only: [:create, :update]
     end
   end
-  resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :tasks, only: [:index, :new, :create]
+  resources :timesheets, only: [:create, :update]
+  get "dashboard", to: "users#dashboard", as: :dashboard
 end
