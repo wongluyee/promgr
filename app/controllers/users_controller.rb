@@ -3,8 +3,6 @@ class UsersController < ApplicationController
     skip_authorization
     @users = policy_scope(User)
     @user = current_user
-
-    # to display individual users tasks:
    
     # To display "Tasks Done" donut pie chart
     @tasks_done = Task.where(status: "done").count
