@@ -1,26 +1,26 @@
-<div class="sidebar col-2 bg-light position-sticky top-0 shadow-sm">
-  <div class="d-flex align-items-center mt-3 ms-3">
-    <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar" %>
+<div class="sidebar col-2 position-sticky top-0 shadow">
+  <div class="d-flex align-items-center mt-3 ms-3 mb-4">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
     <div class="info ms-2">
-      <p class="m-0"><%= @user.name %></p>
-      <p class="m-0"><%= @user.job_title %></p>
+      <p class="username m-0"><%= @user.name %></p>
+      <p class="jobtitle m-0"><%= @user.job_title %></p>
     </div>
   </div>
   <div class="side-bar-items m-3">
     <%= link_to root_path, class: "text-decoration-none text-dark" do  %>
-      <h6><i class="fa-solid fa-house"></i> Home</h6>
+      <h6 class="menu-items mb-3"><i class="fa-solid fa-house"></i> Home</h6>
     <% end %>
     <%= link_to tasks_path, class: "text-decoration-none text-dark" do  %>
-      <h6><i class="fa-regular fa-calendar"></i> Calendar/Tasks</h6>
+      <h6 class="menu-items mb-3"><i class="fa-regular fa-calendar"></i> Calendar/Tasks</h6>
     <% end %>
     <%= link_to user_goals_path(@user), class: "text-decoration-none text-dark" do  %>
-      <h6><i class="fa-solid fa-trophy"></i> My Goals</h6>
+      <h6 class="menu-items mb-3"><i class="fa-solid fa-trophy"></i> My Goals</h6>
     <% end %>
     <%= link_to user_timesheets_path(@user), class: "text-decoration-none text-dark" do  %>
-      <h6><i class="fa-regular fa-clock"></i> My Timesheets</h6>
+      <h6 class="menu-items mb-3"><i class="fa-regular fa-clock"></i> My Timesheets</h6>
     <% end %>
     <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "text-decoration-none text-dark" do  %>
-      <h6><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</h6>
+      <h6 class="menu-items mb-3"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</h6>
     <% end %>
   </div>
 </div>
