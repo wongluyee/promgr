@@ -9,13 +9,13 @@
     <div class="col my-3">
     <h5>Clock in</h5>
         <% @timesheets.first(3).each do |timesheet| %>
-          <li><%= timesheet.time_in.hour %>:0<%= timesheet.time_in.min %> a.m.</li>
+          <li><%= timesheet.time_in.strftime('%l %M %p') %></li>
         <% end %>
     </div>
     <div class="col my-3">
         <h5>Clock out</h5>
           <% @timesheets.first(3).each do |timesheet| %>
-          <li><%= timesheet.time_out.hour %>:0<%= timesheet.time_out.min %> p.m.</li>
+          <li><%= timesheet.time_out.strftime('%l %M %p') %></li>
         <% end %>
     </div>
   </div>
