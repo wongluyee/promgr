@@ -22,21 +22,24 @@
       </div>
 
       <div class="task-list rounded p-2 text-light">
-      <h2>Task List</h2>
+        <h2>Task List</h2>
           <div class="container d-flex flex-column">
           <% @tasks.each do |task| %>
+                 <%= render 'tasks/edittaskform', task: task %>
               <div class="row">
             <p class="badge rounded-pill text-bg-primary"><%= task.task_title %> <%= task.due_date %> <%= task.status %> <% task.users.count.times do %>
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
-            <% end %>    <button class=" btn btn-sm btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">edit task</button>
-                   <%= render 'tasks/deletetaskform'  task:task %>
-                <button class="btn btn-sm btn-primary">delete task</button> </p>
+            <% end %>    <button class=" btn btn-sm btn-primary" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">edit task</button>
 
-            </div>
+
+                <%= link_to "Delete task", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-outline-secondary"%></p>
+              </div>
+
 
           <% end %>
           </div>
       </div>
+
   </div>
 
 
