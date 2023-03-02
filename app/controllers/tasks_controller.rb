@@ -43,7 +43,6 @@ class TasksController < ApplicationController
     else
       render "tasks/edittaskform", status: :unprocessable_entity
     end
-
   end
 
   def destroy
