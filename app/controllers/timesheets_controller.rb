@@ -21,7 +21,7 @@ class TimesheetsController < ApplicationController
     if @timesheet.save
       redirect_to @dashboard
     else
-      render :new
+      render "users/dashboard", status: :unprocessable_entity
     end
   end
 
