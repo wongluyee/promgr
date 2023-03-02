@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import AddTaskController from "./add_task_controller"
+application.register("add-task", AddTaskController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

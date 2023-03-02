@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @users = User.all
+    # render partial: 'tasks/addtask', locals: { task: @task }
     authorize @task
   end
 
