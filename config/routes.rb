@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :tasks, only: [:create, :update]
     end
   end
-  resources :tasks, only: [:index, :new, :create]
+  resources :tasks, only: [:index, :new, :create, :update]
   resources :timesheets, only: [:create, :update]
   get "dashboard", to: "users#dashboard", as: :dashboard
 end
