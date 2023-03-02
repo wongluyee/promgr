@@ -1,7 +1,6 @@
 <div class="div2 mt-4 mb-0 me-5 timesheets d-flex flex-column justify-content-center align-items-center">
   <h5>Timesheets</h5>
   <div class="clock-in-out-button">
-    <%# Need to modify this once Joe done with the clock in/clock out feature %>
     <% if @timesheet == nil %>
       <%= render 'timesheets/clock_in' %>
       <% elsif @timesheet.time_out == nil %>
@@ -9,9 +8,6 @@
        <% else  %>
       <h3> Good work today 🎉</h3>
     <% end %>
-
-
     <%# <%= button_tag 'Clock out', type: 'button' %>
-
   </div>
 </div>
