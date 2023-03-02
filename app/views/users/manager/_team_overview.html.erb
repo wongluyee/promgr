@@ -2,7 +2,7 @@
   <div class= "d-flex justify-content-between align-items-center">
     <h5> Team Overview</h5>
     <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" data-controller="add-task"  data-action="click->add-task#addtask">Add Task</button>
-      <%= render 'users/addtaskform' %>
+    <%= render 'users/addtaskform' %>
   </div>
   <div>
     <table class="table">
@@ -41,8 +41,10 @@
               </th>
               <% employee_overtime = 0 %>
               <% user.timesheets.each do |timesheet| %>
-                <% differences = timesheet.time_out - timesheet.time_in %>
-                <% employee_overtime += differences - 32_400 if differences > 32_400 %>
+                <% if timesheet.time_out %>
+                  <% differences = timesheet.time_out - timesheet.time_in %>
+                  <% employee_overtime += differences - 32_400 if differences > 32_400 %>
+                <% end %>
               <% end %>
               <td><%= (employee_overtime/ 3600).round(1) %></td>
               <td><%= user.tasks.where(status: "In Progress").count %></td>
