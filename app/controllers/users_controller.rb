@@ -4,11 +4,12 @@ class UsersController < ApplicationController
     @users = policy_scope(User)
     @user = current_user
 
+    # to display individual users tasks:
+   
     # To display "Tasks Done" donut pie chart
     @tasks_done = Task.where(status: "done").count
     @all_tasks = Task.all.count
     @tasks_status = Task.group(:status).count
-
     # To display "Team overtime" bar chart
     overtime
   end
