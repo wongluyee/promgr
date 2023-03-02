@@ -1,17 +1,46 @@
-<% if current_user.is_manager? %>
+<div class="row">
+
+   <% if current_user.is_manager? %>
     <%= render 'shared/sidebar_manager' %>
   <% else %>
     <%= render 'shared/sidebar_employee' %>
   <% end %>
-<div class="container mt-3">
 
-  <h1>Calendar/Tasks</h1>
-  <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
-    <div class="d-flex flex-column">
-      <%= date.day %>
-      <% tasks.each do |task| %>
-        <p class="badge rounded-pill text-bg-primary"><%= task.task_title %></p>
+
+  <div class="col">
+
+      <div>
+      <h1>Calendar/Tasks</h1>
+      <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
+        <div class="d-flex flex-column">
+          <%= date.day %>
+          <% tasks.each do |task| %>
+            <p class="badge rounded-pill text-bg-primary"><%= task.task_title %></p>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-</div>
+      </div>
+
+      <div class="task-list rounded p-2 text-light">
+      <h2>Task List</h2>
+          <div class="container d-flex flex-column">
+          <% @tasks.each do |task| %>
+              <div class="row">
+            <p class="badge rounded-pill text-bg-primary"><%= task.task_title %> <%= task.due_date %> <%= task.status %> <% task.users.count.times do %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
+            <% end %>    <button class=" btn btn-sm btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">edit task</button>
+                   <%= render 'tasks/deletetaskform'  task:task %>
+                <button class="btn btn-sm btn-primary">delete task</button> </p>
+
+            </div>
+
+          <% end %>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+  </div>
