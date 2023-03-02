@@ -12,7 +12,8 @@
   grid-row-gap: 0px;
   }
 
-  .div1 { grid-area: 1 / 1 / 2 / 6; }
-  .div2 { grid-area: 2 / 1 / 4 / 2; }
-  .div3 { grid-area: 2 / 2 / 4 / 6; }
-  .div4 { grid-area: 4 / 1 / 8 / 6; }
+  .div1 { grid-area: 1 / 1 / 2 / 4; }
+  .div2 { grid-area: 1 / 4 / 2 / 6; }
+  .div3 { grid-area: 2 / 1 / 4 / 2; }
+  .div4 { grid-area: 2 / 2 / 4 / 6; }
+  .div5 { grid-area: 4 / 1 / 8 / 6; }
