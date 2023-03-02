@@ -1,0 +1,7 @@
+<div class="div2 mb-3">
+<%= simple_form_for [@user, @timesheet] do |f| %>
+<%=f.input :time_in, label: "Clock in", input_html: {class:   DateTime.now }%>
+<%= f.input :time_out, label: "Clock out", input_html: {class:   DateTime.now }%>
+<%= f.button :submit, 'Clock in', class: "btn btn-primary" %>
+<% end %>
+</div>

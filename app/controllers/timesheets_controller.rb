@@ -5,6 +5,7 @@ class TimesheetsController < ApplicationController
 
   def show
     @timesheet = Timesheet.find(params[:id])
+    authorize @timesheet
   end
 
   def new
@@ -15,8 +16,10 @@ class TimesheetsController < ApplicationController
     @user = User.find(params[:user_id])
     @timesheet = Timesheet.new(timesheet_params)
     @timesheet.user = current_user
+    authorize @timesheet
+    @timesheet.user = @user
     if @timesheet.save
-      redirect_to timesheet_path(@timesheet)
+      redirect_to @dashboard
     else
       render :new
     end
