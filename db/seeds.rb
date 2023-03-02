@@ -101,17 +101,28 @@ puts 'Creating user tasks...'
 end
 
 puts 'Creating timesheets...'
+today = Date.today
+start_date = today - 30
 User.all.each do |user|
-  31.times do |index|
-    day = index + 1
+  date = start_date
+  until date == today
+    # 30.times do |index|
+    # day = index + 1
     Timesheet.create!(
       user: user,
       attendance: "working",
       comment: "Working on the project",
-      time_in: DateTime.parse("#{day} Mar 2023 09:#{rand(0...15)}:00"),
-      time_out: DateTime.parse("#{day} Mar 2023 18:#{rand(0...30)}:00")
+      time_in: DateTime.parse("#{date} 09:#{rand(0...15)}:00"),
+      time_out: DateTime.parse("#{date} 18:#{rand(0...30)}:00")
     )
+    date += 1
   end
+  Timesheet.create!(
+    user: user,
+    attendance: "working",
+    comment: "Working on the project",
+    time_in: DateTime.parse("#{today} 09:#{rand(0...15)}:00")
+  )
 end
 
 puts 'Creating goals...'

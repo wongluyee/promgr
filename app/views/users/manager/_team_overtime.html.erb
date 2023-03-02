@@ -1,4 +1,4 @@
-<div class="div4 me-4">
+<div class="me-5 text-white p-3 over-time">
   <h5>Team Overtime (Hours)</h5>
-  <%= bar_chart(@employees_hash) %>
+  <%= bar_chart(@employees_hash, library: { legend: { labels: { color: "#f00"}}}) %>
 </div>

@@ -1,19 +1,40 @@
 // Specific CSS for your home-page
-// manager dashboard %>
-// sidenavbar %>
+// manager dashboard
+// sidenavbar -> inside components folder
 
-
-// right side %>
+// right side
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 32px;
+  grid-row-gap: 32px;
   }
 
   .div1 { grid-area: 1 / 1 / 2 / 4; }
   .div2 { grid-area: 1 / 4 / 2 / 6; }
-  .div3 { grid-area: 2 / 1 / 4 / 2; }
-  .div4 { grid-area: 2 / 2 / 4 / 6; }
-  .div5 { grid-area: 4 / 1 / 8 / 6; }
+  .div3 {
+    // grid-area: 2 / 1 / 4 / 2;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 4;
+    grid-column-end: 2;
+    background-color: $light-blue;
+    border-radius: 10px;
+  }
+  .over-time {
+    // grid-area: 2 / 2 / 4 / 6;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: 4;
+    grid-column-end: 6;
+    background-color: $light-blue;
+    border-radius: 10px;
+  }
+  .div5 {
+    // grid-area: 4 / 1 / 8 / 6;
+    grid-row-start: 4;
+    grid-column-start: 1;
+    grid-row-end: 7;
+    grid-column-end: 6;
+  }
