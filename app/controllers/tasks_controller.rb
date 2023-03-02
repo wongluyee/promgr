@@ -26,7 +26,6 @@ class TasksController < ApplicationController
     else
       render "users/dashboard", status: :unprocessable_entity
     end
-
   end
 
   private
@@ -34,5 +33,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:task_title, :description, :due_date, user_ids: [])
   end
-
 end

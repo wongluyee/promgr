@@ -1,0 +1,22 @@
+<div class="container border border-dark daily">
+  <div class="d-flex flex-row col-12">
+    <div class="col my-3">
+       <h5>Date</h5>
+       <% @timesheets.first(3).each do |timesheet| %>
+          <%= timesheet.time_in.year %>/<%= timesheet.time_in.month %>/<%= timesheet.time_in.day %></li>
+        <% end %>
+    </div>
+    <div class="col my-3">
+    <h5>Clock in</h5>
+        <% @timesheets.first(3).each do |timesheet| %>
+          <li><%= timesheet.time_in.hour %>:0<%= timesheet.time_in.min %> a.m.</li>
+        <% end %>
+    </div>
+    <div class="col my-3">
+        <h5>Clock out</h5>
+          <% @timesheets.first(3).each do |timesheet| %>
+          <li><%= timesheet.time_out.hour %>:0<%= timesheet.time_out.min %> p.m.</li>
+        <% end %>
+    </div>
+  </div>
+</div>

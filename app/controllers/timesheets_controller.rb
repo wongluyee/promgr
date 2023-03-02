@@ -1,5 +1,4 @@
 class TimesheetsController < ApplicationController
-
   def index
     @timesheets = Timesheet.all
   end
@@ -13,6 +12,7 @@ class TimesheetsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @timesheet = Timesheet.new(timesheet_params)
     @timesheet.user = current_user
     if @timesheet.save
@@ -37,5 +37,4 @@ class TimesheetsController < ApplicationController
   def timesheet_params
     params.require(:timesheet).permit(:time_in, :time_out, :attendance, :comment)
   end
-
 end

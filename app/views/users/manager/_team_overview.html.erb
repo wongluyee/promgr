@@ -1,4 +1,4 @@
-<div class="team-overview p-4">
+<div class="div5 team-overview p-4 bg-white m-5">
   <div class= "d-flex justify-content-between align-items-center">
     <h5> Team Overview</h5>
     <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" data-controller="add-task"  data-action="click->add-task#addtask">Add Task</button>
@@ -10,16 +10,16 @@
         <tr>
           <th scope="col" class="col-4"></th>
           <th scope="col" class="col-2">
-            <p>Total overtime</p>
-            <p> this time</p>
+            <span>Total overtime</span><br>
+            <span> this time</span>
           </th>
           <th scope="col" class="col-2">
-            <p>Ongoing</p>
-            <p>tasks</p>
+            <span>Ongoing</span><br>
+            <span>tasks</span>
           </th>
           <th scope="col" class="col-2">
-            <p>Completed</p>
-            <p>tasks</p>
+            <span>Completed</span><br>
+            <span>tasks</span>
           </th>
           <th scope="col" class="col-2"></th>
         </tr>
@@ -27,41 +27,66 @@
       <tbody>
         <tr>
           <th scope="row">
-            <p>Joe</p>
-            <p>Lead dev</p>
+            <div class="d-flex">
+              <div>
+                <%# image %>
+              </div>
+              <div>
+                <span>Joe</span><br>
+                <span>Lead dev</span>
+              </div>
+            </div>
           </th>
           <td>2hrs</td>
           <td>2 tasks</td>
           <td>10 tasks</td>
-          <td>
-            <button type="button" class="btn btn-secondary">View Profile</button>
+          <td class="pe-0">
+            <div class="d-flex justify-content-end align-items-center">
+              <button type="button" class="btn btn-secondary my-auto">View Profile</button>
+            </div>
           </td>
         </tr>
         <tr>
           <th scope="row">
-            <p>Josh</p>
-            <p>Backend dev</p>
+            <div class="d-flex">
+              <div>
+                <%# image %>
+              </div>
+              <div>
+                <span>Josh</span><br>
+                <span>Backend dev</span>
+              </div>
+            </div>
           </th>
           <td>2hrs</td>
           <td>2 tasks</td>
           <td>10 tasks</td>
-          <td>
-            <button type="button" class="btn btn-secondary">View Profile</button>
+          <td class="pe-0">
+            <div class="d-flex justify-content-end align-items-center">
+              <button type="button" class="btn btn-secondary my-auto">View Profile</button>
+            </div>
           </td>
         </tr>
         <tr>
           <th scope="row">
-            <p>Luye</p>
-            <p>Frontend dev</p>
-          </th>
-          <td>2hrs</td>
-          <td>2 tasks</td>
-          <td>10 tasks</td>
-          <td>
-            <button type="button" class="btn btn-secondary">View Profile</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+            <div class="d-flex">
+              <div>
+                <%# image %>
+              </div>
+              <div>
+                <span>Luye</span><br>
+                <span>Frontend dev</span>
+              </th>
+              <td>2hrs</td>
+              <td>2 tasks</td>
+              <td>10 tasks</td>
+              <td class="pe-0">
+                <div class="d-flex justify-content-end align-items-center">
+                  <button type="button" class="btn btn-secondary my-auto">View Profile</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
