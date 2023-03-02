@@ -2,8 +2,8 @@
   <div class="d-flex align-items-center mt-3 ms-3 mb-4">
     <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
     <div class="info ms-2">
-      <h5 class="username m-0"><%= @user.name %></h5>
-      <p class="jobtitle m-0"><%= @user.job_title %></p>
+      <h5 class="username m-0"><%= current_user.name %></h5>
+      <p class="jobtitle m-0"><%= current_user.job_title %></p>
     </div>
   </div>
   <div class="side-bar-items m-3">
