@@ -1,4 +1,4 @@
-<div class="div3 ms-3">
-  <h5>Tasks Done <%= @tasks_done %>/<%= @all_tasks %></h5>
+<div class="div3 ms-5 text-white p-3">
+  <h5>Tasks Done (<%= @tasks_done %>/<%= @all_tasks %>)</h5>
   <%= pie_chart @tasks_status, colors: ['#52CD9F', '#BFBFBF'], donut: true %>
 </div>
