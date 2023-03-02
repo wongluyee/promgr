@@ -24,68 +24,30 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">
-            <div class="d-flex">
-              <div>
-                <%# image %>
-              </div>
-              <div>
-                <span>Joe</span><br>
-                <span>Lead dev</span>
-              </div>
-            </div>
-          </th>
-          <td>2hrs</td>
-          <td>2 tasks</td>
-          <td>10 tasks</td>
-          <td class="pe-0">
-            <div class="d-flex justify-content-end align-items-center">
-              <button type="button" class="btn btn-secondary my-auto">View Profile</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <div class="d-flex">
-              <div>
-                <%# image %>
-              </div>
-              <div>
-                <span>Josh</span><br>
-                <span>Backend dev</span>
-              </div>
-            </div>
-          </th>
-          <td>2hrs</td>
-          <td>2 tasks</td>
-          <td>10 tasks</td>
-          <td class="pe-0">
-            <div class="d-flex justify-content-end align-items-center">
-              <button type="button" class="btn btn-secondary my-auto">View Profile</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <div class="d-flex">
-              <div>
-                <%# image %>
-              </div>
-              <div>
-                <span>Luye</span><br>
-                <span>Frontend dev</span>
-              </th>
-              <td>2hrs</td>
-              <td>2 tasks</td>
-              <td>10 tasks</td>
-              <td class="pe-0">
-                <div class="d-flex justify-content-end align-items-center">
-                  <button type="button" class="btn btn-secondary my-auto">View Profile</button>
+        <% @users.each do |user| %>
+          <tr>
+            <th scope="row">
+              <div class="d-flex">
+                <div>
+                  <%# image %>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+                <div>
+                  <span><%= user.name %></span><br>
+                  <span><%= user.job_title %></span>
+                </div>
+              </div>
+            </th>
+            <td>2hrs</td>
+            <td>2 tasks</td>
+            <td>10 tasks</td>
+            <td class="pe-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-secondary my-auto">View Profile</button>
+              </div>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
