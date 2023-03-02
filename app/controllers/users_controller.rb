@@ -20,21 +20,21 @@ class UsersController < ApplicationController
 
     # Pseudo code:
     # Get all employees
-    @all_employees = User.where(is_manager: false)
+    all_employees = User.where(is_manager: false)
     # Get all employees' timesheets
     @employees_hash = {}
-    @all_employees.each do |employee|
+    all_employees.each do |employee|
       # Get one employee timesheets
       employee_timesheets = employee.timesheets
-      @employee_overtime = 0
+      employee_overtime = 0
       # Iterate all the timesheets
       employee_timesheets.each do |timesheet|
         # Calculate each timesheet's (time_out - time_in)
         differences = timesheet.time_out - timesheet.time_in
         # If results > 32400 add to overtime
-        @employee_overtime += differences - 32_400 if differences > 32_400
+        employee_overtime += differences - 32_400 if differences > 32_400
         # Convert seconds to hours
-        employee_overtime_hrs = @employee_overtime / 3600
+        employee_overtime_hrs = employee_overtime / 3600
         @employees_hash[employee.name] = employee_overtime_hrs.round(2)
       end
     end
