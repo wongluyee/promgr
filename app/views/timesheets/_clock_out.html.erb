@@ -1,7 +1,6 @@
-
 <div class="div1 mb-3">
  <%= simple_form_for @timesheet ,data: {action: "submit->insert-in-list#update"} do |f| %>
-        <%= f.input :status, as: :hidden, input_html: {value: 'Clocked out'} %>
-        <%= button_tag "Clock out", class: "btn  btn-lg btn-outline-success me-2" %>
-      <% end %>
+  <%= f.input :status, as: :hidden, input_html: {value: 'Clocked out'} %>
+  <%= button_tag "Clock out", class: "btn  btn-lg btn-outline-success me-2" %>
+ <% end %>
 </div>
