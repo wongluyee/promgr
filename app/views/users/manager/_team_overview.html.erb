@@ -25,68 +25,38 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">
-            <div class="d-flex">
-              <div>
-                <%# image %>
-              </div>
-              <div>
-                <span>Joe</span><br>
-                <span>Lead dev</span>
-              </div>
-            </div>
-          </th>
-          <td>2hrs</td>
-          <td>2 tasks</td>
-          <td>10 tasks</td>
-          <td class="pe-0">
-            <div class="d-flex justify-content-end align-items-center">
-              <button type="button" class="btn btn-secondary my-auto">View Profile</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <div class="d-flex">
-              <div>
-                <%# image %>
-              </div>
-              <div>
-                <span>Josh</span><br>
-                <span>Backend dev</span>
-              </div>
-            </div>
-          </th>
-          <td>2hrs</td>
-          <td>2 tasks</td>
-          <td>10 tasks</td>
-          <td class="pe-0">
-            <div class="d-flex justify-content-end align-items-center">
-              <button type="button" class="btn btn-secondary my-auto">View Profile</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <div class="d-flex">
-              <div>
-                <%# image %>
-              </div>
-              <div>
-                <span>Luye</span><br>
-                <span>Frontend dev</span>
+        <% @users.each do |user| %>
+          <% unless user.is_manager %>
+            <tr>
+              <th scope="row">
+                <div class="d-flex">
+                  <div>
+                    <%# image %>
+                  </div>
+                  <div>
+                    <span><%= user.name %></span><br>
+                    <span><%= user.job_title %></span>
+                  </div>
+                </div>
               </th>
-              <td>2hrs</td>
-              <td>2 tasks</td>
-              <td>10 tasks</td>
+              <% employee_overtime = 0 %>
+              <% user.timesheets.each do |timesheet| %>
+                <% differences = timesheet.time_out - timesheet.time_in %>
+                <% employee_overtime += differences - 32_400 if differences > 32_400 %>
+              <% end %>
+              <td><%= (employee_overtime/ 3600).round(1) %></td>
+              <td><%= user.tasks.where(status: "In Progress").count %></td>
+              <td><%= user.tasks.where(status: "done").count %></td>
               <td class="pe-0">
                 <div class="d-flex justify-content-end align-items-center">
-                  <button type="button" class="btn btn-secondary my-auto">View Profile</button>
+                  <%= link_to "View Profile", user_path(user), class:"btn btn-secondary my-auto" %>
+                  <%# <button type="button" class="btn btn-secondary my-auto">View Profile</button> %>
                 </div>
               </td>
             </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+          <%end%>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
