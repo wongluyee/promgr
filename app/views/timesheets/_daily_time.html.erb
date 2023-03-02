@@ -3,19 +3,19 @@
     <div class="col my-3">
        <h5>Date</h5>
        <% @timesheets.first(3).each do |timesheet| %>
-          <%= timesheet.time_in.year %>/<%= timesheet.time_in.month %>/<%= timesheet.time_in.day %></li>
+          <%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
         <% end %>
     </div>
     <div class="col my-3">
     <h5>Clock in</h5>
         <% @timesheets.first(3).each do |timesheet| %>
-          <li><%= timesheet.time_in.strftime('%l %M %p') %></li>
+          <li><%= timesheet.time_in.strftime('%l:%M %p') %></li>
         <% end %>
     </div>
     <div class="col my-3">
         <h5>Clock out</h5>
           <% @timesheets.first(3).each do |timesheet| %>
-          <li><%= timesheet.time_out.strftime('%l %M %p') %></li>
+          <li><%= timesheet.time_out.strftime('%l:%M %p')  %></li>
         <% end %>
     </div>
   </div>
