@@ -1,6 +1,7 @@
 class TimesheetsController < ApplicationController
   def index
-    @timesheets = Timesheet.all
+    @timesheets = policy_scope(Timesheet)
+    authorize @timesheets
   end
 
   def show
