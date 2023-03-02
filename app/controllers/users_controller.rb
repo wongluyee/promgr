@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @tasks_done = Task.where(status: "done").count
     @all_tasks = Task.all.count
     @tasks_status = Task.group(:status).count
-
     # To display "Team overtime" bar chart
     overtime
   end
