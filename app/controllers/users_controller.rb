@@ -44,6 +44,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @timesheets = @user.timesheets
-    authorize @user
+    @goals = @user.goals
+    # authorize @user
+    # skip_authorization
   end
 end
