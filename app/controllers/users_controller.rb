@@ -46,6 +46,6 @@ class UsersController < ApplicationController
     @timesheets = @user.timesheets
     @goals = @user.goals
     # authorize @user
-    # skip_authorization
+    skip_authorization
   end
 end
