@@ -6,7 +6,7 @@
     <% elsif @timesheet.time_out == nil %>
       <%= render 'timesheets/clock_out' %>
     <% else  %>
-      <h3> Good work today <%= @user.name %> 🎉</h3>
+      <h3> Good work today <%= current_user.name %> 🎉</h3>
     <% end %>
     <%# <%= button_tag 'Clock out', type: 'button' %>
   </div>
