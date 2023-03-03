@@ -1,12 +1,12 @@
 <div class="div2 mt-4 mb-0 me-5 timesheets d-flex flex-column justify-content-center align-items-center">
   <h5>Timesheets</h5>
   <div class="clock-in-out-button">
-    <% if @timesheet == nil %>
+    <% if @timesheet.time_in.to_date != @today %>
       <%= render 'timesheets/clock_in' %>
-      <% elsif @timesheet.time_out == nil %>
+    <% elsif @timesheet.time_out == nil %>
       <%= render 'timesheets/clock_out' %>
-       <% else  %>
-      <h3> Good work today 🎉</h3>
+    <% else  %>
+      <h3> Good work today <%= @user.name %> 🎉</h3>
     <% end %>
     <%# <%= button_tag 'Clock out', type: 'button' %>
   </div>
