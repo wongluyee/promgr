@@ -31,7 +31,7 @@
               <th scope="row">
                 <div class="d-flex">
                   <div>
-                    <%# image %>
+                    <%= image_tag user.photo.key, height: 300, width: 400, crop: :fill %>
                   </div>
                   <div>
                     <span><%= user.name %></span><br>

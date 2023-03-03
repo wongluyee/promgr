@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 require 'date'
+require "open-uri"
 
 puts 'Cleaning the DB...'
 UserTask.destroy_all
@@ -25,6 +26,8 @@ User.create!(
   password: "12345678",
   is_manager: true
 )
+  # file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1673190740/pyp2lkzx5ec4awqextwq.jpg")
+  # user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
 User.create!(
   name: "Josh",
@@ -33,6 +36,8 @@ User.create!(
   password: "12345678",
   is_manager: false
 )
+  file = URI.open("https://avatars.githubusercontent.com/u/97093935?v=4")
+  user.photo.attach(io: file, filename: "josh.png", content_type: "image/png")
 
 User.create!(
   name: "Joe",
@@ -41,6 +46,8 @@ User.create!(
   password: "12345678",
   is_manager: false
 )
+  file = URI.open("https://avatars.githubusercontent.com/u/105550930?v=4")
+  user.photo.attach(io: file, filename: "joe.png", content_type: "image/png")
 
 User.create!(
   name: "Luyee",
@@ -49,6 +56,9 @@ User.create!(
   password: "12345678",
   is_manager: false
 )
+file = URI.open("https://avatars.githubusercontent.com/u/111058709?v=4")
+user.photo.attach(io: file, filename: "Luyee.png", content_type: "image/png")
+
 users << User.where(is_manager: false)
 # user = users.sample
 
