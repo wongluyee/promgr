@@ -121,7 +121,6 @@ User.all.each do |user|
     user: user,
     attendance: "working",
     comment: "Working on the project",
-    time_in: DateTime.parse("#{today} 09:#{rand(0...15)}:00")
   )
 end
 
