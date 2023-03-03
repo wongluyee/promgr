@@ -30,9 +30,7 @@
             <tr>
               <th scope="row">
                 <div class="d-flex">
-                  <div>
-                    <%= image_tag user.photo.key, height: 300, width: 400, crop: :fill %>
-                  </div>
+                  <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
                   <div>
                     <span><%= user.name %></span><br>
                     <span><%= user.job_title %></span>
