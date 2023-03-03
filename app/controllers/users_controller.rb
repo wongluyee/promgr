@@ -81,5 +81,11 @@ class UsersController < ApplicationController
     skip_authorization
     @goals = @user.goals
     # authorize @user
+
+    # To display employee donut chart
+    @tasks = @user.tasks
+    @my_tasks_done = @tasks.where(status: "done").count
+    @all_my_tasks = @tasks.count
+    @my_tasks_status = @tasks.group(:status).count
   end
 end
