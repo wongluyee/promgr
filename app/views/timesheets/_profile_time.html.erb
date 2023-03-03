@@ -1,0 +1,30 @@
+<div class="div2 daily ms-5 ps-5">
+  <div class="container d-flex flex-row justify-content-evenly">
+    <div class="col my-3 me-5">
+      <div class="text-center"><h5>Date</h5></div>
+       <% @timesheets.last(10).each do |timesheet| %>
+         <li><%= timesheet.time_in.strftime('%Y-%m-%d (%a)') %></li>
+        <% end %>
+    </div>
+    <div class="col my-3 ms-5">
+      <h5>Clock in</h5>
+        <% @timesheets.last(10).each do |timesheet| %>
+          <% if timesheet.time_in.nil? %>
+            <li>Missing</li>
+          <% else %>
+          <li><%= timesheet.time_in.strftime('%l:%M %p') %></li>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="col my-3">
+        <h5>Clock out</h5>
+          <% @timesheets.last(10).each do |timesheet| %>
+          <% if timesheet.time_out.nil? %>
+            <li>Missing</li>
+          <% else %>
+          <li><%= timesheet.time_out.strftime('%l:%M %p')  %></li>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

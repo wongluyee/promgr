@@ -1,0 +1,19 @@
+ <div class="div4 row rounded me-5">
+  <div class="col">
+      <h2 class="text-white">Task List</h2>
+    <div class="task-list2 p-2 text-light">
+      <div class="container d-flex flex-column">
+        <% @user.tasks.each do |task| %>
+          <%= render 'tasks/edittaskform', task: task %>
+          <div class="row">
+            <p class="badge rounded-pill text-bg-primary"><%= task.task_title %> <%= task.due_date %> <%= task.status %> <% task.users.count.times do %>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
+              <% end %>
+              <button class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit task</button>
+              <%= link_to "Delete task", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
