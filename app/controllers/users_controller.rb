@@ -5,13 +5,19 @@ class UsersController < ApplicationController
     skip_authorization
     @users = policy_scope(User)
     @user = current_user
+
+    # For clock in/clock out
+    @today = Date.today
     @timesheet_new = Timesheet.new
     @timesheet = @user.timesheets.last
+
     @task = Task.new
+
     # To display "Tasks Done" donut pie chart
     @tasks_done = Task.where(status: "done").count
     @all_tasks = Task.all.count
     @tasks_status = Task.group(:status).count
+
     # To display "Team overtime" bar chart
     overtime
 
@@ -22,17 +28,12 @@ class UsersController < ApplicationController
   def check_attendance
     # 1. Get all the users that it is not manager
     employees = User.where(is_manager: false)
-    # 2. Check the time_in record for today
-    # today = DateTime.parse("31 Mar 2023 00:00:00")
     today = Date.today
     @absent_employee = []
-    employees.each do |employee|
-      if employee.timesheets != []
-        if employee.timesheets.last.time_in != today
-          @absent_employee << employee.name
-        end
-      end
-    end
+    # 2. Check the time_in record for today
+    employees.each { |employee|
+      @absent_employee << employee.name if employee.timesheets != [] && employee.timesheets.first.time_in.to_date != today
+    }
     # 3. If all of them is true, show message "All of your team members are here today!"
     # 4. Else show message "#{user.name} is not yet here."
     if @absent_employee.empty?

@@ -8,14 +8,14 @@
 require 'faker'
 require 'date'
 
-puts 'Cleaning the DB..'
+puts 'Cleaning the DB...'
 UserTask.destroy_all
 Task.destroy_all
 Timesheet.destroy_all
 Goal.destroy_all
 User.destroy_all
 
-puts 'Creating  users...'
+puts 'Creating users...'
 users = []
 
 User.create!(
@@ -24,14 +24,6 @@ User.create!(
   job_title: "Manager",
   password: "12345678",
   is_manager: true
-)
-
-User.create!(
-  name: "Luyee",
-  email: "luyee@wong.com",
-  job_title: "Frontend Dev",
-  password: "12345678",
-  is_manager: false
 )
 
 User.create!(
@@ -50,6 +42,13 @@ User.create!(
   is_manager: false
 )
 
+User.create!(
+  name: "Luyee",
+  email: "luyee@wong.com",
+  job_title: "Frontend Dev",
+  password: "12345678",
+  is_manager: false
+)
 users << User.where(is_manager: false)
 # user = users.sample
 
@@ -102,10 +101,9 @@ end
 
 puts 'Creating timesheets...'
 today = Date.today
-start_date = today - 30
 User.all.each do |user|
-  date = start_date
-  until date == today
+  date = today - 1
+  until date == today - 30
     # 30.times do |index|
     # day = index + 1
     Timesheet.create!(
@@ -115,13 +113,8 @@ User.all.each do |user|
       time_in: DateTime.parse("#{date} 09:#{rand(0...15)}:00"),
       time_out: DateTime.parse("#{date} 18:#{rand(0...30)}:00")
     )
-    date += 1
+    date -= 1
   end
-  Timesheet.create!(
-    user: user,
-    attendance: "working",
-    comment: "Working on the project",
-  )
 end
 
 puts 'Creating goals...'
