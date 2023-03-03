@@ -4,7 +4,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <div>
+    <div class="remove-ticks-bootstrap">
     <%= simple_form_for task do |f| %>
       <%= f.input :task_title %>
       <%= f.input :description ,as: :text, :input_html => {:rows => 8}%>

@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   def dashboard
     skip_authorization
     @users = policy_scope(User)
-    @user = current_user
+    # @user = current_user
 
     # For clock in/clock out
     @today = Date.today
     @timesheet_new = Timesheet.new
-    @timesheet = @user.timesheets.last
+    @timesheet = current_user.timesheets.last
 
     @task = Task.new
 
