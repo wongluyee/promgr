@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @absent_employee = []
     employees.each do |employee|
       if employee.timesheets != []
-        if employee.timesheets.last.time_in.to_date != today
+        if employee.timesheets.last.time_in.to_d != today
           @absent_employee << employee.name
         end
       end
