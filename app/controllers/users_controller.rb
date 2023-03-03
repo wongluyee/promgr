@@ -31,9 +31,11 @@ class UsersController < ApplicationController
     today = Date.today
     @absent_employee = []
     # 2. Check the time_in record for today
-    employees.each { |employee|
-      @absent_employee << employee.name if employee.timesheets != [] && employee.timesheets.first.time_in.to_date != today
-    }
+    employees.each do |employee|
+      if employee.timesheets != [] && employee.timesheets.first.time_in.to_date != today
+        @absent_employee << employee.name
+      end
+    end
     # 3. If all of them is true, show message "All of your team members are here today!"
     # 4. Else show message "#{user.name} is not yet here."
     if @absent_employee.empty?
