@@ -2,13 +2,13 @@
   <div class="d-flex flex-row col-12">
     <div class="col my-3">
       <h5>Date</h5>
-      <% @my_timesheets.all.each do |timesheet| %>
+      <% @my_timesheets.all.order(time_in: :desc).each do |timesheet| %>
         <li><%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
       <% end %>
     </div>
     <div class="col my-3">
       <h5>Clock in</h5>
-      <% @my_timesheets.all.each do |timesheet| %>
+      <% @my_timesheets.all.order(time_in: :desc).each do |timesheet| %>
         <% if timesheet.time_in.nil? %>
           <li>Missing</li>
         <% else %>
@@ -18,7 +18,7 @@
     </div>
     <div class="col my-3">
       <h5>Clock out</h5>
-      <% @my_timesheets.all.each do |timesheet| %>
+      <% @my_timesheets.all.order(time_in: :desc).each do |timesheet| %>
         <% if timesheet.time_out.nil? %>
           <li>Missing</li>
         <% else %>
