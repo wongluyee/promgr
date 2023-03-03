@@ -1,5 +1,27 @@
-.remove-ticks-bootstrap > *{
+.remove-ticks-bootstrap .was-validated .form-control:valid, .form-control.is-valid{
+  border-color: black !important;
+  background-image: none !important;
+}
+
+
+
+.remove-ticks-bootstrap.was-validated .form-select:valid, .form-select.is-valid{
 
   border-color: black !important;
   background-image: none !important;
+}
+
+.remove-ticks-bootstrap.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked{
+  border-color: black !important;
+
+}
+
+.remove-ticks-bootstrap.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label{
+  color:black !important;
+}
+
+
+
+.remove-ticks-bootstrap.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked{
+  background-color: black !important;
 }

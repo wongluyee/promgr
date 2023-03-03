@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to users_path
     else
-      render "users/dashboard", status: :unprocessable_entity
+      render "users/dashboard", status: :unprocessable_entity, locals: { timesheet_new: Timesheet.new }
     end
   end
 
