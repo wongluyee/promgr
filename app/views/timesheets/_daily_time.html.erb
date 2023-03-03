@@ -1,30 +1,32 @@
 <div class="container border border-dark daily">
   <div class="d-flex flex-row col-12">
     <div class="col my-3">
-       <h5>Date</h5>
-       <% @timesheets.all.each do |timesheet| %>
-         <li><%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
+      <h5>Date</h5>
+      <% @timesheets.all.each do |timesheet| %>
+        <% if timesheet.time_in.present? %>
+          <li><%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
         <% end %>
+      <% end %>
     </div>
     <div class="col my-3">
-    <h5>Clock in</h5>
-        <% @timesheets.all.each do |timesheet| %>
-          <% if timesheet.time_in.nil? %>
-            <li>Missing</li>
-          <% else %>
+      <h5>Clock in</h5>
+      <% @timesheets.all.each do |timesheet| %>
+        <% if timesheet.time_in.nil? %>
+          <li>Missing</li>
+        <% else %>
           <li><%= timesheet.time_in.strftime('%l:%M %p') %></li>
-            <% end %>
         <% end %>
+      <% end %>
     </div>
     <div class="col my-3">
-        <h5>Clock out</h5>
-          <% @timesheets.all.each do |timesheet| %>
-          <% if timesheet.time_out.nil? %>
-            <li>Missing</li>
-          <% else %>
+      <h5>Clock out</h5>
+      <% @timesheets.all.each do |timesheet| %>
+        <% if timesheet.time_out.nil? %>
+          <li>Missing</li>
+        <% else %>
           <li><%= timesheet.time_out.strftime('%l:%M %p')  %></li>
-          <% end %>
         <% end %>
+      <% end %>
     </div>
   </div>
 </div>
