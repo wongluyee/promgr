@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 require 'date'
+require "open-uri"
 
 puts 'Cleaning the DB...'
 UserTask.destroy_all
@@ -25,30 +26,42 @@ User.create!(
   password: "12345678",
   is_manager: true
 )
+  # file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1673190740/pyp2lkzx5ec4awqextwq.jpg")
+  # user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 
-User.create!(
+josh = User.new(
   name: "Josh",
   email: "josh@ng.com",
   job_title: "Backend Dev",
   password: "12345678",
   is_manager: false
 )
+  file = URI.open("https://avatars.githubusercontent.com/u/97093935?v=4")
+  josh.photo.attach(io: file, filename: "josh.jpg", content_type: "image/jpg")
+  josh.save
 
-User.create!(
+joe = User.new(
   name: "Joe",
   email: "joe@luc.com",
   job_title: "Lead Dev",
   password: "12345678",
   is_manager: false
 )
+  file = URI.open("https://avatars.githubusercontent.com/u/105550930?v=4")
+  joe.photo.attach(io: file, filename: "joe.jpg", content_type: "image/jpg")
+  joe.save
 
-User.create!(
+luyee = User.new(
   name: "Luyee",
   email: "luyee@wong.com",
   job_title: "Frontend Dev",
   password: "12345678",
   is_manager: false
 )
+file = URI.open("https://avatars.githubusercontent.com/u/111058709?v=4")
+luyee.photo.attach(io: file, filename: "luyee.jpg", content_type: "image/jpg")
+luyee.save
+
 users << User.where(is_manager: false)
 # user = users.sample
 
