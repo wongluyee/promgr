@@ -25,12 +25,25 @@
                 <div><b><%= task.task_title %></b></div>
                 <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
               </div>
-              <div>
+              <div class="d-flex flex-row align-items-center justify-content-end">
+                <div>
                 <% task.users.count.times do %>
                   <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
                 <% end %>
-                <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit</button>
-                <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%></div>
+                </div>
+                <div>
+               <button class="btn btn-dark  mx-1" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit</button>
+               </div>
+               <div>
+                <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%>
+                </div>
+                <div>
+                <%= simple_form_for task,data: {action: "submit->insert-in-list#update"} do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'done'} %>
+                <%= f.submit 'Done', class: "btn btn-dark mb-3 ms-1" %>
+                <% end %>
+              </div>
+              </div>
             </div>
           </div>
         <% end %>
