@@ -17,7 +17,7 @@
     <div class="task-list rounded p-3 text-light">
       <h2>Task List</h2>
       <div class="container d-flex flex-column gap-3">
-        <% @tasks.each do |task| %>
+        <% @tasks.order(:due_date).each do |task| %>
           <%= render 'tasks/edittaskform', task: task %>
           <div class="row rounded text-dark bg-light">
             <div class="col d-flex align-items-center justify-content-between p-1">
