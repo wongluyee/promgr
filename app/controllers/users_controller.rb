@@ -17,15 +17,16 @@ class UsersController < ApplicationController
     clock_in_out
 
     # To display "Tasks Done" donut pie chart
-    @tasks_done = Task.where(status: "Done").count
-    @all_tasks = Task.all.count
-    @tasks_status = Task.group(:status).count
+    tasks_done
 
     # To display "Team overtime" bar chart
     overtime
 
     # To add new task
     @task = Task.new
+
+    # To display "My Tasks Done" in employee dashboard
+    individual_tasks(current_user)
   end
 
   def show
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
     # authorize @user
 
     # To display individual donut chart
-    individual_tasks
+    individual_tasks(@user)
 
     # To display individual overtime chart
     individual_overtime
@@ -74,6 +75,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def tasks_done
+    @tasks_done = Task.where(status: "Done").count
+    @all_tasks = Task.all.count
+    @tasks_status = Task.group(:status).count
+  end
+
   def overtime
     # (time_out - time_in) will get results in seconds
     # 9 hours = 32400 seconds (9 hours because deduct lunch time)
@@ -104,8 +111,8 @@ class UsersController < ApplicationController
     @employees_hash
   end
 
-  def individual_tasks
-    @tasks = @user.tasks
+  def individual_tasks(user)
+    @tasks = user.tasks
     @my_tasks_done = @tasks.where(status: "Done").count
     @all_my_tasks = @tasks.count
     @my_tasks_status = @tasks.group(:status).count
