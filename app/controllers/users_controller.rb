@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     @absent_employee = []
     # 2. Check the time_in record for today
     employees.each do |employee|
-      if employee.timesheets != [] && employee.timesheets.last.time_in.to_date != today
+      ordered_timesheets = employee.timesheets.order(:time_in)
+      if employee.timesheets != [] && ordered_timesheets.last.time_in.to_date != today
         @absent_employee << employee.name
       end
     end
