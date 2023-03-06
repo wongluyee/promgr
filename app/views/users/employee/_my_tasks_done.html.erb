@@ -1,0 +1,8 @@
+<div class="div3 ms-5 text-white p-3 boxes">
+  <h5 class="text-light">My Tasks Done (<%= @my_tasks_done %>/<%= @all_my_tasks %>)</h5>
+  <% if @my_tasks_done == 0 %>
+    <%= pie_chart @my_tasks_status, colors: ['#BFBFBF'], donut: true %>
+  <% else %>
+    <%= pie_chart @my_tasks_status, colors: ['#52CD9F', '#BFBFBF'], donut: true %>
+  <% end %>
+</div>
