@@ -1,0 +1,12 @@
+$theme-colors: (
+  "body-color": $body-color,
+  "primary": $primary,
+  "success": $success,
+  "info": $info,
+  "danger": $danger,
+  "warning": $warning,
+  "light": $light-gray,
+  "dark": $gray
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
