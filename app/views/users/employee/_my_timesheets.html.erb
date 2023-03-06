@@ -5,13 +5,13 @@
       <div class="text-center">
         <h5>Date</h5>
       </div>
-      <% @my_timesheets.first(10).each do |timesheet| %>
+      <% @my_timesheets.order(time_in: :desc).first(10).each do |timesheet| %>
         <li><%= timesheet.time_in.strftime('%Y-%m-%d (%a)') %></li>
       <% end %>
     </div>
     <div class="col ms-3 flex-fill text-center">
       <h5>Clock in</h5>
-      <% @my_timesheets.first(10).each do |timesheet| %>
+      <% @my_timesheets.order(time_in: :desc).first(10).each do |timesheet| %>
         <% if timesheet.time_in.nil? %>
           <li>Missing</li>
         <% else %>
@@ -21,7 +21,7 @@
     </div>
     <div class="col flex-fill text-center">
       <h5>Clock out</h5>
-      <% @my_timesheets.first(10).each do |timesheet| %>
+      <% @my_timesheets.order(time_in: :desc).first(10).each do |timesheet| %>
         <% if timesheet.time_out.nil? %>
           <li>Missing</li>
         <% else %>
