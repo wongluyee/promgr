@@ -1,14 +1,13 @@
 <div class="container border border-dark daily mx-5 my-4">
-     <div class="d-flex flex-row justify-content-end mt-3">
-
-       <h5 class="mx-5">Time In</h5>
-      <h5 class="mx-5">Time Out</h5>
-      <h5 class="me-4">Attendance</h5>
-    </div>
-      <% @my_timesheets.all.order(time_in: :desc).each do |timesheet| %>
+  <div class="d-flex flex-row justify-content-end mt-3">
+    <h5 class="mx-4">Time In</h5>
+    <h5 class="mx-5">Time Out</h5>
+    <h5 class="me-4">Attendance</h5>
+  </div>
+    <% @my_timesheets.all.order(time_in: :desc).each do |timesheet| %>
       <div class="d-flex flex-row justify-content-between my-3 border-bottom mx-4">
         <div>
-          <li><%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
+          <li><%= timesheet.time_in.strftime('%Y-%m-%d (%a)') %></li>
         </div>
         <div>
           <% if timesheet.time_in.nil? %>
@@ -24,10 +23,9 @@
             <li><%= timesheet.time_out.strftime('%l:%M %p')  %></li>
           <% end %>
         </div>
-        <div class="text-center">
+        <div>
           <%= timesheet.attendance %>
         </div>
       </div>
-
     <% end %>
 </div>
