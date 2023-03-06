@@ -4,8 +4,11 @@
     <div class="boxes p-2 text-light">
       <div class="d-flex flex-column rounded">
         <% @user.goals.each do |goal| %>
-          <%= goal.title %>
+        <details>
+          <summary class="ms-1"><%= goal.title %> </summary>
+          <p class="ms-1"> <%= goal.description %> </p>
         <% end %>
+        </details>
       </div>
     </div>
   </div>
