@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     # For clock in/clock out
     clock_in_out
 
-    # To display "Tasks Done" donut pie chart
+    # To display team overall "Tasks Done" donut pie chart
     tasks_done
 
     # To display "Team overtime" bar chart
@@ -25,8 +25,11 @@ class UsersController < ApplicationController
     # To add new task
     @task = Task.new
 
-    # To display "My Tasks Done" in employee dashboard
+    # To display "My Tasks Done" donut pie chart in employee dashboard
     individual_tasks(current_user)
+
+    # To display "My Overtime" bar chart in employee dashboard
+    individual_overtime(current_user)
   end
 
   def show
@@ -39,7 +42,7 @@ class UsersController < ApplicationController
     individual_tasks(@user)
 
     # To display individual overtime chart
-    individual_overtime
+    individual_overtime(@user)
   end
 
   private
@@ -118,15 +121,15 @@ class UsersController < ApplicationController
     @my_tasks_status = @tasks.group(:status).count
   end
 
-  def individual_overtime
+  def individual_overtime(user)
     individual_overtime = 0
     @individual_hash = {}
-    @user.timesheets.each do |timesheet|
+    user.timesheets.each do |timesheet|
       if timesheet.time_out
         differences = timesheet.time_out - timesheet.time_in
         individual_overtime += differences - 32_400 if differences > 32_400
         individual_overtime_hrs = individual_overtime / 3600
-        @individual_hash[@user.name] = individual_overtime_hrs.round(2)
+        @individual_hash[user.name] = individual_overtime_hrs.round(2)
       end
     end
     @individual_hash
