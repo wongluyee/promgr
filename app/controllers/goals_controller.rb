@@ -2,7 +2,12 @@ class GoalsController < ApplicationController
 
   def index
 
-    @goals = policy_scope(Goal)
+    if current_user.is_manager?
+    @user = User.find(params[:user_id])
+     @goals = policy_scope(@user.goals)
+    else
+      @goals = policy_scope(Goal)
+    end
     authorize @goals
     @goal = Goal.new
 
