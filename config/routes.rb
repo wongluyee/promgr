@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   root to: "users#dashboard"
 
   resources :users, only: [:index, :show] do
-    resources :goals, only: [:index, :create, :update]
+    resources :goals, only: [:index, :create]
     resources :timesheets, only: [:index]
     resources :user_tasks, only: [:create] do
       resources :tasks, only: [:create, :update]
     end
   end
-  resources :goals, only: [:create, :update]
+  resources :goals, only: [:update]
   resources :tasks, only: [:index, :new, :create, :update, :destroy]
   resources :timesheets, only: [:create, :update]
   get "dashboard", to: "users#dashboard", as: :dashboard
