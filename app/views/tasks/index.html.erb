@@ -14,7 +14,7 @@
         <% end %>
       </div>
     <% end %>
-    <div class="task-list rounded p-3 text-light">
+    <div class="boxes p-3 text-light">
       <h2>Task List</h2>
       <div class="container d-flex flex-column gap-3">
         <% @tasks.order(:due_date).each do |task| %>
@@ -39,8 +39,8 @@
                 </div>
                 <div>
                   <%= simple_form_for task,data: {action: "submit->insert-in-list#update"} do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'done'} %>
-                  <%= f.submit 'Done', class: "btn btn-dark mb-3 ms-1" %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'done'} %>
+                    <%= f.submit 'Done', class: "btn btn-dark mb-3 ms-1" %>
                   <% end %>
                 </div>
               </div>

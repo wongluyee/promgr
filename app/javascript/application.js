@@ -2,6 +2,7 @@
 //= require chartkick
 //= require Chart.bundle
 import "chartkick/chart.js"
+import "chartkick"
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"

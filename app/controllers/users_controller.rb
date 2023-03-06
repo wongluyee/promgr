@@ -1,28 +1,56 @@
 require 'date'
 
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :individual_tasks, :individual_overtime]
+
   def dashboard
     skip_authorization
     @users = policy_scope(User)
-    # @user = current_user
+
+    # To display greeting message to manager
+    check_attendance
+
+    # To display greeting message to employee
+    greet_employee
 
     # For clock in/clock out
-    @today = Date.today
-    @timesheet_new = Timesheet.new
-    @timesheet = current_user.timesheets.last
-
-    @task = Task.new
+    clock_in_out
 
     # To display "Tasks Done" donut pie chart
-    @tasks_done = Task.where(status: "done").count
+    @tasks_done = Task.where(status: "Done").count
     @all_tasks = Task.all.count
     @tasks_status = Task.group(:status).count
 
     # To display "Team overtime" bar chart
     overtime
 
-    # To display greeting message
-    check_attendance
+    # To add new task
+    @task = Task.new
+  end
+
+  def show
+    @timesheets = @user.timesheets
+    skip_authorization
+    @goals = @user.goals
+    # authorize @user
+
+    # To display individual donut chart
+    individual_tasks
+
+    # To display individual overtime chart
+    individual_overtime
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def clock_in_out
+    @today = Date.today
+    @timesheet_new = Timesheet.new
+    @timesheet = current_user.timesheets.last
   end
 
   def check_attendance
@@ -76,17 +104,33 @@ class UsersController < ApplicationController
     @employees_hash
   end
 
-  def show
-    @user = User.find(params[:id])
-    @timesheets = @user.timesheets
-    skip_authorization
-    @goals = @user.goals
-    # authorize @user
-
-    # To display employee donut chart
+  def individual_tasks
     @tasks = @user.tasks
-    @my_tasks_done = @tasks.where(status: "done").count
+    @my_tasks_done = @tasks.where(status: "Done").count
     @all_my_tasks = @tasks.count
     @my_tasks_status = @tasks.group(:status).count
+  end
+
+  def individual_overtime
+    individual_overtime = 0
+    @individual_hash = {}
+    @user.timesheets.each do |timesheet|
+      if timesheet.time_out
+        differences = timesheet.time_out - timesheet.time_in
+        individual_overtime += differences - 32_400 if differences > 32_400
+        individual_overtime_hrs = individual_overtime / 3600
+        @individual_hash[@user.name] = individual_overtime_hrs.round(2)
+      end
+    end
+    @individual_hash
+  end
+
+  def greet_employee
+    tasks_count = @current_user.tasks.where(status: 'In Progress').count
+    if @current_user.tasks
+      @greeting_message_employee = "Remember to clock in! You've got #{tasks_count} #{'task'.pluralize(tasks_count)} today."
+    else
+      @greeting_message_employee = "Remember to clock in! You completed all your tasks! Please contact your manager."
+    end
   end
 end
