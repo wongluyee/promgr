@@ -3,7 +3,11 @@
     <h2 class="text-light">Performance</h2>
     <div class="boxes p-3">
       <h5 class="text-light">Tasks Done (<%= @my_tasks_done %>/<%= @all_my_tasks %>)</h5>
-      <%= pie_chart @my_tasks_status, colors: ['#52CD9F', '#BFBFBF'], donut: true %>
+      <% if @my_tasks_done == 0 %>
+        <%= pie_chart @my_tasks_status, colors: ['#BFBFBF'], donut: true %>
+      <% else %>
+        <%= pie_chart @my_tasks_status, colors: ['#52CD9F', '#BFBFBF'], donut: true %>
+      <% end %>
       <h5 class="text-light mt-5">My Overtime (Hours)</h5>
       <%= bar_chart(@individual_hash) %>
     </div>

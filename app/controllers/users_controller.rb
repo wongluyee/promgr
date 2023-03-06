@@ -32,13 +32,10 @@ class UsersController < ApplicationController
     @goals = @user.goals
     # authorize @user
 
-    # To display employee donut chart
-    @tasks = @user.tasks
-    @my_tasks_done = @tasks.where(status: "done").count
-    @all_my_tasks = @tasks.count
-    @my_tasks_status = @tasks.group(:status).count
+    # To display individual donut chart
+    individual_tasks
 
-    # To display employee overtime chart
+    # To display individual overtime chart
     individual_overtime
   end
 
@@ -93,6 +90,13 @@ class UsersController < ApplicationController
       end
     end
     @employees_hash
+  end
+
+  def individual_tasks
+    @tasks = @user.tasks
+    @my_tasks_done = @tasks.where(status: "done").count
+    @all_my_tasks = @tasks.count
+    @my_tasks_status = @tasks.group(:status).count
   end
 
   def individual_overtime
