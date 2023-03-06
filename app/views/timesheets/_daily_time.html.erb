@@ -1,11 +1,11 @@
 <div class="container border border-dark daily mx-5 my-4">
-     <div class="d-flex flex-row justify-content-between mx-5 mt-3">
+     <div class="d-flex flex-row justify-content-around mx-5 mt-3">
       <h5>Date</h5>
-       <div class="align-self-center"><h5>Time In</h5></div>
+       <h5>Time In</h5>
       <h5>Time Out</h5>
     </div>
       <% @my_timesheets.all.order(time_in: :desc).each do |timesheet| %>
-      <div class="d-flex flex-row justify-content-between my-3 border-bottom mx-4">
+      <div class="d-flex flex-row justify-content-around my-3 border-bottom mx-4">
         <div>
           <li><%= timesheet.time_in.strftime('%Y/%m/%d') %></li>
         </div>
@@ -22,6 +22,9 @@
           <% else %>
             <li><%= timesheet.time_out.strftime('%l:%M %p')  %></li>
           <% end %>
+        </div>
+        <div>
+          <%= timesheet.attendance %>
         </div>
       </div>
 
