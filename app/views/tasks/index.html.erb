@@ -27,8 +27,12 @@
               </div>
               <div class="d-flex flex-row align-items-center justify-content-end">
                 <div>
-                  <% task.users.count.times do %>
-                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
+                  <% task.users.each do |user| %>
+                    <% if user.photo.attached? %>
+                      <%= cl_image_tag user.photo.key, class: "avatar-bordered" %>
+                    <% else %>
+                      <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1673190740/pyp2lkzx5ec4awqextwq.jpg", class: "avatar-bordered shadow" %>
+                    <% end %>
                   <% end %>
                 </div>
                 <div>
