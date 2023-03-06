@@ -5,8 +5,8 @@
       <div class="d-flex flex-column rounded">
         <% @user.goals.each do |goal| %>
         <details>
-          <summary><%= goal.title %> </summary>
-          <p> <%= goal.description %> </p>
+          <summary class="ms-1"><%= goal.title %> </summary>
+          <p class="ms-1"> <%= goal.description %> </p>
         <% end %>
         </details>
       </div>
