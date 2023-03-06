@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def dashboard
     skip_authorization
     @users = policy_scope(User)
-    # @user = current_user
 
     # For clock in/clock out
     @today = Date.today
@@ -25,6 +24,22 @@ class UsersController < ApplicationController
     check_attendance
   end
 
+  def show
+    @user = User.find(params[:id])
+    @timesheets = @user.timesheets
+    skip_authorization
+    @goals = @user.goals
+    # authorize @user
+
+    # To display individual donut chart
+    individual_tasks
+
+    # To display individual overtime chart
+    individual_overtime
+  end
+
+  private
+
   def check_attendance
     # 1. Get all the users that it is not manager
     employees = User.where(is_manager: false)
@@ -32,7 +47,8 @@ class UsersController < ApplicationController
     @absent_employee = []
     # 2. Check the time_in record for today
     employees.each do |employee|
-      if employee.timesheets != [] && employee.timesheets.last.time_in.to_date != today
+      ordered_timesheets = employee.timesheets.order(:time_in)
+      if employee.timesheets != [] && ordered_timesheets.last.time_in.to_date != today
         @absent_employee << employee.name
       end
     end
@@ -75,17 +91,25 @@ class UsersController < ApplicationController
     @employees_hash
   end
 
-  def show
-    @user = User.find(params[:id])
-    @timesheets = @user.timesheets
-    skip_authorization
-    @goals = @user.goals
-    # authorize @user
-
-    # To display employee donut chart
+  def individual_tasks
     @tasks = @user.tasks
     @my_tasks_done = @tasks.where(status: "done").count
     @all_my_tasks = @tasks.count
     @my_tasks_status = @tasks.group(:status).count
+  end
+
+  def individual_overtime
+    individual_overtime = 0
+    @individual_hash = {}
+    user = User.find(params[:id])
+    user.timesheets.each do |timesheet|
+      if timesheet.time_out
+        differences = timesheet.time_out - timesheet.time_in
+        individual_overtime += differences - 32_400 if differences > 32_400
+        individual_overtime_hrs = individual_overtime / 3600
+        @individual_hash[user.name] = individual_overtime_hrs.round(2)
+      end
+    end
+    @individual_hash
   end
 end

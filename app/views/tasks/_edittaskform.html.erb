@@ -9,8 +9,11 @@
       <%= f.input :task_title %>
       <%= f.input :description ,as: :text, :input_html => {:rows => 8}%>
       <%= f.input :due_date %>
-      <%= f.association :users, as: :check_boxes,label: 'Assign employee to task',:multiple => true %>
-      <%# <%= f.input :user_ids, collection: @users,label: 'Assign employee to task',  as: :radio_buttons,input_html: { multiple: true } %>
+     <%= f.association :users,
+          as: :check_boxes,label: 'Assign employee to task',
+          input_html: { class: "tag-selector" },
+          item_wrapper_class: 'tag-item',
+          :multiple => true %>
       <%= f.button :submit, class: "btn btn-default btn-primary" %>
     <% end %>
     </div>

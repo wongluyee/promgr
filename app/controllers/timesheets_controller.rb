@@ -17,6 +17,7 @@ class TimesheetsController < ApplicationController
 
   def create
     @timesheet = Timesheet.new
+    @timesheet.attendance = "Working"
     @timesheet.time_in = DateTime.now
     @timesheet.user = current_user
     authorize @timesheet

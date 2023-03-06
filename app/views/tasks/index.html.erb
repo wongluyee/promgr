@@ -4,32 +4,47 @@
   <% else %>
     <%= render 'shared/sidebar_employee' %>
   <% end %>
-  <div class="col">
+  <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
     <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
       <div class="d-flex flex-column">
         <%= date.day %>
         <% tasks.each do |task| %>
-          <p class="badge rounded-pill text-bg-primary"><%= task.task_title %></p>
+          <p class="badge rounded-pill text-bg-light"><%= task.task_title %></p>
         <% end %>
       </div>
     <% end %>
-    <div class="task-list rounded p-2 text-light">
+    <div class="boxes p-3 text-light">
       <h2>Task List</h2>
       <div class="container d-flex flex-column gap-3">
-        <% @tasks.each do |task| %>
+        <% @tasks.order(:due_date).each do |task| %>
           <%= render 'tasks/edittaskform', task: task %>
           <div class="row rounded text-dark bg-light">
             <div class="col d-flex align-items-center justify-content-between p-1">
               <div>
-              <div><b><%= task.task_title %></b></div>  <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div> </div>
-              <div>
-              <% task.users.count.times do %>
-                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
-                <% end %>
-                <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit</button>
-                <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%></div>
+                <div><b><%= task.task_title %></b></div>
+                <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
               </div>
+              <div class="d-flex flex-row align-items-center justify-content-end">
+                <div>
+                  <% task.users.count.times do %>
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-bordered" %>
+                  <% end %>
+                </div>
+                <div>
+                  <button class="btn btn-dark  mx-1" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit</button>
+                </div>
+                <div>
+                  <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%>
+                </div>
+                <div>
+                  <%= simple_form_for task,data: {action: "submit->insert-in-list#update"} do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'done'} %>
+                    <%= f.submit 'Done', class: "btn btn-dark mb-3 ms-1" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>

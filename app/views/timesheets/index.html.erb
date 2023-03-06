@@ -1,1 +1,10 @@
-<%= render 'timesheets/daily_time' %>
+<div class="row">
+  <% if current_user.is_manager? %>
+    <%= render 'shared/sidebar_manager' %>
+  <% else %>
+    <%= render 'shared/sidebar_employee' %>
+  <% end %>
+    <div class="col-md-6 mt-3">
+      <%= render 'timesheets/daily_time' %>
+    </div>
+</div>
