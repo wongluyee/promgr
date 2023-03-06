@@ -1,7 +1,7 @@
 .parent2 {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(5, auto 1fr);
   grid-column-gap: 32px;
   grid-row-gap: 32px;
 

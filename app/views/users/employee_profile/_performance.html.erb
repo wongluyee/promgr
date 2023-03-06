@@ -9,7 +9,7 @@
         <%= pie_chart @my_tasks_status, colors: ['#52CD9F', '#BFBFBF'], donut: true %>
       <% end %>
       <h5 class="text-light mt-5">My Overtime (Hours)</h5>
-      <%= bar_chart(@individual_hash) %>
+      <%= bar_chart @individual_hash, height: "200px" %>
     </div>
   </div>
 </div>
