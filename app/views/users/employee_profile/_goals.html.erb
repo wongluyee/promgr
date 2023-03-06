@@ -1,10 +1,10 @@
-<div class="div5 ms-5 rounded">
+<div class="div4 ms-5">
   <div class="col">
     <h2 class="text-white">Goals</h2>
-      <div class="goal-list p-2 text-light">
-        <div class="d-flex flex-column rounded">
+    <div class="boxes p-2 text-light">
+      <div class="d-flex flex-column rounded">
         <% @user.goals.each do |goal| %>
-        <%= goal.title %>
+          <%= goal.title %>
         <% end %>
       </div>
     </div>

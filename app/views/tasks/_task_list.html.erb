@@ -1,7 +1,7 @@
-<div class="div4 row me-5">
+<div class="div5 row me-5">
   <div class="col">
     <h2 class="text-white">Task List</h2>
-    <div class="task-list2 p-2 text-light">
+    <div class="boxes p-2 text-light">
       <div class="container d-flex flex-column gap-3">
         <% @tasks.order(:due_date).each do |task| %>
           <%= render 'tasks/edittaskform', task: task %>
