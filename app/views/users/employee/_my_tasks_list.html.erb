@@ -1,0 +1,23 @@
+<div class="div6 row me-5 mb-4 p-3 boxes">
+  <div class="col">
+    <h5 class="text-white">My Tasks List</h5>
+    <div class="text-light">
+      <div class="container d-flex flex-column gap-3">
+        <% @tasks.order(:due_date).each do |task| %>
+          <%= render 'tasks/edittaskform', task: task %>
+          <div class="row rounded text-dark bg-light">
+            <div class="col d-flex align-items-center justify-content-between p-1">
+              <div>
+                <div><b><%= task.task_title %></b></div>
+                <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
+              </div>
+              <div>
+                <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample">Edit</button>
+                <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-dark" %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
