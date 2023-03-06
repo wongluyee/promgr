@@ -139,11 +139,11 @@ class UsersController < ApplicationController
   end
 
   def greet_employee
-    tasks_count = @current_user.tasks.where(status: 'In Progress').count
-    if @current_user.tasks
-      @greeting_message_employee = "Remember to clock in! You've got #{tasks_count} #{'task'.pluralize(tasks_count)} today."
-    else
+    tasks_count = current_user.tasks.where(status: 'In Progress').count
+    if tasks_count == 0
       @greeting_message_employee = "Remember to clock in! You completed all your tasks! Please contact your manager."
+    else
+      @greeting_message_employee = "Remember to clock in! You've got #{tasks_count} #{'task'.pluralize(tasks_count)} today."
     end
   end
 end
