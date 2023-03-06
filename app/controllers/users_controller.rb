@@ -30,6 +30,9 @@ class UsersController < ApplicationController
 
     # To display "My Overtime" bar chart in employee dashboard
     individual_overtime(current_user)
+
+    # To display "My daily activities" in employee dashboard
+    @my_timesheets = current_user.timesheets
   end
 
   def show
