@@ -33,7 +33,7 @@ mehdi = User.new(
 josh = User.new(
   name: "Josh",
   email: "josh@ng.com",
-  job_title: "Finance Manager",
+  job_title: "Finance Associate",
   password: "12345678",
   is_manager: false
 )
@@ -55,7 +55,7 @@ joe = User.new(
 luyee = User.new(
   name: "Luyee",
   email: "luyee@wong.com",
-  job_title: "Lead Accounter",
+  job_title: "Lead Accountant",
   password: "12345678",
   is_manager: false
 )
