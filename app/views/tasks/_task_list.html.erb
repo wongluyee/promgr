@@ -12,11 +12,18 @@
                 <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
               </div>
               <div>
-                <% task.users.count.times do %>
-                  <%= cl_image_tag @user.photo.key, class: "avatar-bordered shadow me-3" %>
+                <% task.users.each do |user| %>
+                  <% if user.photo.attached? %>
+                    <%= cl_image_tag user.photo.key, class: "avatar-bordered" %>
+                  <% else %>
+                    <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1673190740/pyp2lkzx5ec4awqextwq.jpg", class: "avatar-bordered shadow" %>
+                  <% end %>
                 <% end %>
-                <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit</button>
-                <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%></div>
+                <button class="btn btn-dark rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark rounded-pill" do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
