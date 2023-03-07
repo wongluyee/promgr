@@ -7,5 +7,8 @@ import { application } from "./application"
 import AddTaskController from "./add_task_controller"
 application.register("add-task", AddTaskController)
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
