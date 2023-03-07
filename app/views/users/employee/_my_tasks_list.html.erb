@@ -18,8 +18,8 @@
                 <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
               </div>
               <div>
-                <button class="btn btn-dark rounded-circle" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
-                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-circle" do %>
+                <button class="btn btn-dark rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-pill" do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>
