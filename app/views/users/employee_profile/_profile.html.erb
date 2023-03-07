@@ -1,6 +1,6 @@
 <div class="div1 ms-5 mt-3 text-light">
   <h1><%= @user.name %>'s Profile</h1>
-  <div class="d-flex align-items-center boxes me-5 p-3">
+  <div class="d-flex align-items-center boxes p-3">
     <%= cl_image_tag @user.photo.key, class: "avatar-bordered me-3" %>
     <div class="d-flex flex-column justify-content-center">
       <p class="mb-1"><%= @user.name %></p>
