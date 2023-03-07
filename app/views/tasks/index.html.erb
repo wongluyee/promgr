@@ -36,15 +36,19 @@
                   <% end %>
                 </div>
                 <div>
-                  <button class="btn btn-dark  mx-1" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample">Edit</button>
+                  <button class="btn btn-dark mx-1 rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
                 </div>
                 <div>
-                  <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark"%>
+                  <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark rounded-pill" do%>
+                    <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
                 </div>
                 <div>
                   <%= simple_form_for task,data: {action: "submit->insert-in-list#update"} do |f| %>
                     <%= f.input :status, as: :hidden, input_html: { value: 'done'} %>
-                    <%= f.submit 'Done', class: "btn btn-dark mb-3 ms-1" %>
+                    <%= button_tag class: "btn btn-dark mb-3 ms-1 rounded-pill" do %>
+                      <i class="fa-regular fa-circle-check"></i>
+                    <% end %>
                   <% end %>
                 </div>
               </div>

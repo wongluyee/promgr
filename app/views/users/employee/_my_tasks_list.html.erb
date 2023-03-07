@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h5 class="text-white mb-0">My Tasks List</h5>
       <div>
-        <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Add Task</button>
+        <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i> Add Task</button>
         <%= render 'users/addtaskform' %>
       </div>
     </div>
@@ -18,8 +18,11 @@
                 <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
               </div>
               <div>
-                <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample">Edit</button>
-                <%= link_to "Delete", task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-dark" %></div>
+                <button class="btn btn-dark rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-pill" do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
