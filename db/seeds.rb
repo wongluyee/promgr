@@ -15,6 +15,7 @@ Task.destroy_all
 Timesheet.destroy_all
 Goal.destroy_all
 User.destroy_all
+Chatroom.destroy_all
 
 puts 'Creating users...'
 users = []
