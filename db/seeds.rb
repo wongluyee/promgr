@@ -33,9 +33,9 @@ mehdi = User.new(
 josh = User.new(
   name: "Josh",
   email: "josh@ng.com",
-  job_title: "Finance Manager",
+  job_title: "Finance Associate",
   password: "12345678",
-  is_manager: true
+  is_manager: false
 )
   file = URI.open("https://avatars.githubusercontent.com/u/97093935?v=4")
   josh.photo.attach(io: file, filename: "josh.jpg", content_type: "image/jpg")
@@ -55,7 +55,7 @@ joe = User.new(
 luyee = User.new(
   name: "Luyee",
   email: "luyee@wong.com",
-  job_title: "Lead Accounter",
+  job_title: "Lead Accountant",
   password: "12345678",
   is_manager: false
 )
@@ -106,10 +106,17 @@ Task.create!(
 tasks << Task.all
 
 puts 'Creating user tasks...'
+tasks = Task.all.shuffle
 5.times do
+  task = tasks.pop
+  user = User.where(is_manager: false).sample
   UserTask.create!(
-    user: User.where(is_manager: false).sample,
-    task: Task.all.sample
+    user: user,
+    task: task
+  )
+  UserTask.create!(
+    user: User.where.not(id: user.id).sample,
+    task: task
   )
 end
 
