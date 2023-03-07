@@ -35,7 +35,7 @@ josh = User.new(
   email: "josh@ng.com",
   job_title: "Finance Manager",
   password: "12345678",
-  is_manager: true
+  is_manager: false
 )
   file = URI.open("https://avatars.githubusercontent.com/u/97093935?v=4")
   josh.photo.attach(io: file, filename: "josh.jpg", content_type: "image/jpg")
@@ -106,10 +106,17 @@ Task.create!(
 tasks << Task.all
 
 puts 'Creating user tasks...'
+tasks = Task.all.shuffle
 5.times do
+  task = tasks.pop
+  user = User.where(is_manager: false).sample
   UserTask.create!(
-    user: User.where(is_manager: false).sample,
-    task: Task.all.sample
+    user: user,
+    task: task
+  )
+  UserTask.create!(
+    user: User.where.not(id: user.id).sample,
+    task: task
   )
 end
 
