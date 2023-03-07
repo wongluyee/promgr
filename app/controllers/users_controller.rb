@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   def tasks_done
     @tasks_done = Task.where(status: "Done").count
     @all_tasks = Task.all.count
-    @tasks_status = Task.group(:status).count
+    @tasks_status = Task.group(:status).count.sort
   end
 
   def overtime
