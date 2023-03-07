@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_065221) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_235539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_065221) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "goals", force: :cascade do |t|
     t.text "description"
     t.string "status", default: "In Progress"
@@ -51,6 +57,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_065221) do
     t.string "title"
     t.text "comments"
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -101,6 +117,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_065221) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "goals", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "timesheets", "users"
   add_foreign_key "user_tasks", "tasks"
   add_foreign_key "user_tasks", "users"
