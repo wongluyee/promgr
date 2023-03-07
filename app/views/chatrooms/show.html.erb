@@ -4,7 +4,10 @@
   <% else %>
     <%= render 'shared/sidebar_employee' %>
   <% end %>
-  <div class="col-10 container chatroom">
+  <div class="col-10 container chatroom"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+  >
     <%= render 'chatrooms/chatroom' %>
     <%= render 'chatrooms/message_input' %>
   </div>
