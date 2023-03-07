@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :set_chatroom
   include Pundit::Authorization
 
   # Pundit: allow-list approach
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
   # end
 
   private
+
+  def set_chatroom
+    @chatroom = Chatroom.first
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

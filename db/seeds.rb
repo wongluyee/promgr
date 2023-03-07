@@ -19,15 +19,16 @@ User.destroy_all
 puts 'Creating users...'
 users = []
 
-User.create!(
+mehdi = User.new(
   name: "Mehdi",
   email: "elmehdi@ben.com",
   job_title: "Manager",
   password: "12345678",
   is_manager: true
 )
-  # file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1673190740/pyp2lkzx5ec4awqextwq.jpg")
-  # user.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+  file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1673190740/pyp2lkzx5ec4awqextwq.jpg")
+  mehdi.photo.attach(io: file, filename: "mehdi.jpg", content_type: "image/jpg")
+  mehdi.save
 
 josh = User.new(
   name: "Josh",
@@ -163,5 +164,8 @@ Goal.create!(
 #   status: "in_progress"
 # )
 
+puts "Creating chatroom..."
+Chatroom.create(name: "general")
+
 puts "... created #{User.count} users, #{Task.count} tasks, #{UserTask.count} tasks for users,
-#{Timesheet.count} timesheets, and #{Goal.count} goals."
+#{Timesheet.count} timesheets, and #{Goal.count} goals. Also, #{Chatroom.count} chatroom added."

@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index, :new, :create, :update, :destroy]
   resources :timesheets, only: [:create, :update]
   get "dashboard", to: "users#dashboard", as: :dashboard
+
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end
