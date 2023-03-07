@@ -6,7 +6,9 @@
   <% end %>
   <div class="user-profile col-10">
     <%= render 'users/employee_profile/profile' %>
-    <%= render 'timesheets/profile_time' %>
+    <div class="div2 daily ms-5 mt-0">
+      <%= render 'timesheets/profile_time' %>
+    </div>
     <%= render 'users/employee_profile/performance' %>
     <%= render 'users/employee_profile/goals' %>
     <%= render 'tasks/task_list' %>

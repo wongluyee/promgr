@@ -2,8 +2,13 @@ class GoalsController < ApplicationController
 
   def index
 
-    @goals = policy_scope(Goal)
-    authorize @goals
+    if current_user.is_manager?
+    @user = User.find(params[:user_id])
+     @goals = policy_scope(@user.goals)
+    else
+      @goals = policy_scope(Goal)
+    end
+
     @goal = Goal.new
 
   end
@@ -28,11 +33,24 @@ class GoalsController < ApplicationController
     end
   end
 
+  def update
+    @goal = Goal.find(params[:id])
+    authorize @goal
+
+    if @goal.update(goal_params)
+
+      redirect_to user_goals_path(@goal.user)
+    else
+      render "goals/editgoalform", status: :unprocessable_entity
+    end
+  end
+
+
 
   private
 
   def goal_params
-    params.require(:goal).permit(:title, :description)
+    params.require(:goal).permit(:title, :description, :status, :comments)
   end
 
 end

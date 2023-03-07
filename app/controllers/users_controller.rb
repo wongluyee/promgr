@@ -16,16 +16,23 @@ class UsersController < ApplicationController
     # For clock in/clock out
     clock_in_out
 
-    # To display "Tasks Done" donut pie chart
-    @tasks_done = Task.where(status: "Done").count
-    @all_tasks = Task.all.count
-    @tasks_status = Task.group(:status).count
+    # To display team overall "Tasks Done" donut pie chart
+    tasks_done
 
     # To display "Team overtime" bar chart
     overtime
 
     # To add new task
     @task = Task.new
+
+    # To display "My Tasks Done" donut pie chart in employee dashboard
+    individual_tasks(current_user)
+
+    # To display "My Overtime" bar chart in employee dashboard
+    individual_overtime(current_user)
+
+    # To display "My daily activities" in employee dashboard
+    @my_timesheets = current_user.timesheets
   end
 
   def show
@@ -35,10 +42,10 @@ class UsersController < ApplicationController
     # authorize @user
 
     # To display individual donut chart
-    individual_tasks
+    individual_tasks(@user)
 
     # To display individual overtime chart
-    individual_overtime
+    individual_overtime(@user)
   end
 
   private
@@ -74,6 +81,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def tasks_done
+    @tasks_done = Task.where(status: "Done").count
+    @all_tasks = Task.all.count
+    @tasks_status = Task.group(:status).count
+  end
+
   def overtime
     # (time_out - time_in) will get results in seconds
     # 9 hours = 32400 seconds (9 hours because deduct lunch time)
@@ -104,33 +117,33 @@ class UsersController < ApplicationController
     @employees_hash
   end
 
-  def individual_tasks
-    @tasks = @user.tasks
+  def individual_tasks(user)
+    @tasks = user.tasks
     @my_tasks_done = @tasks.where(status: "Done").count
     @all_my_tasks = @tasks.count
     @my_tasks_status = @tasks.group(:status).count
   end
 
-  def individual_overtime
+  def individual_overtime(user)
     individual_overtime = 0
     @individual_hash = {}
-    @user.timesheets.each do |timesheet|
+    user.timesheets.each do |timesheet|
       if timesheet.time_out
         differences = timesheet.time_out - timesheet.time_in
         individual_overtime += differences - 32_400 if differences > 32_400
         individual_overtime_hrs = individual_overtime / 3600
-        @individual_hash[@user.name] = individual_overtime_hrs.round(2)
+        @individual_hash[user.name] = individual_overtime_hrs.round(2)
       end
     end
     @individual_hash
   end
 
   def greet_employee
-    tasks_count = @current_user.tasks.where(status: 'In Progress').count
-    if @current_user.tasks
-      @greeting_message_employee = "Remember to clock in! You've got #{tasks_count} #{'task'.pluralize(tasks_count)} today."
-    else
+    tasks_count = current_user.tasks.where(status: 'In Progress').count
+    if tasks_count == 0
       @greeting_message_employee = "Remember to clock in! You completed all your tasks! Please contact your manager."
+    else
+      @greeting_message_employee = "Remember to clock in! You've got #{tasks_count} #{'task'.pluralize(tasks_count)} today."
     end
   end
 end

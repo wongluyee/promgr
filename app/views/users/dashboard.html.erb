@@ -2,8 +2,8 @@
   <% if current_user.is_manager? %>
     <%= render 'shared/sidebar_manager' %>
     <div class="manager-dashboard col-10">
-      <%= render 'users/manager/greeting' %>
-      <%= render 'users/manager/timesheets' %>
+      <%= render 'users/greeting' %>
+      <%= render 'users/timesheets' %>
       <%= render 'users/manager/tasks_done' %>
       <%= render 'users/manager/team_overtime' %>
       <%= render 'users/manager/team_overview' %>
@@ -11,7 +11,12 @@
   <% else %>
     <%= render 'shared/sidebar_employee' %>
     <div class="employee-dashboard col-10">
-      <%= render 'users/employee/employee_greeting' %>
+      <%= render 'users/greeting' %>
+      <%= render 'users/timesheets' %>
+      <%= render 'users/employee/my_tasks_done' %>
+      <%= render 'users/employee/my_overtime' %>
+      <%= render 'users/employee/my_timesheets' %>
+      <%= render 'users/employee/my_tasks_list' %>
     </div>
   <% end %>
 </div>
