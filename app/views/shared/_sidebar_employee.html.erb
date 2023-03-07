@@ -13,6 +13,9 @@
     <%= link_to tasks_path, class: "text-decoration-none text-dark" do  %>
       <h6 class="menu-items mb-3"><i class="fa-regular fa-calendar"></i> Calendar/Tasks</h6>
     <% end %>
+    <%= link_to chatroom_path(@chatroom), class: "text-decoration-none text-dark" do  %>
+      <h6 class="menu-items mb-3"><i class="fa-regular fa-comments"></i> Message</h6>
+    <% end %>
     <%= link_to user_goals_path(current_user), class: "text-decoration-none text-dark" do  %>
       <h6 class="menu-items mb-3"><i class="fa-solid fa-trophy"></i> My Goals</h6>
     <% end %>

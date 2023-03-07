@@ -33,6 +33,9 @@ class UsersController < ApplicationController
 
     # To display "My daily activities" in employee dashboard
     @my_timesheets = current_user.timesheets
+
+    # To go to the chatroom
+    @chatroom = Chatroom.find(1)
   end
 
   def show

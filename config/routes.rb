@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   resources :timesheets, only: [:create, :update]
   get "dashboard", to: "users#dashboard", as: :dashboard
 
-  resources :chatrooms, only: :show
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end
