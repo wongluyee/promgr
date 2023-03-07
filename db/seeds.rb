@@ -33,9 +33,9 @@ mehdi = User.new(
 josh = User.new(
   name: "Josh",
   email: "josh@ng.com",
-  job_title: "Backend Dev",
+  job_title: "Finance Manager",
   password: "12345678",
-  is_manager: false
+  is_manager: true
 )
   file = URI.open("https://avatars.githubusercontent.com/u/97093935?v=4")
   josh.photo.attach(io: file, filename: "josh.jpg", content_type: "image/jpg")
@@ -44,7 +44,7 @@ josh = User.new(
 joe = User.new(
   name: "Joe",
   email: "joe@luc.com",
-  job_title: "Lead Dev",
+  job_title: "Digital Marketing Specialist",
   password: "12345678",
   is_manager: false
 )
@@ -55,7 +55,7 @@ joe = User.new(
 luyee = User.new(
   name: "Luyee",
   email: "luyee@wong.com",
-  job_title: "Frontend Dev",
+  job_title: "Lead Accounter",
   password: "12345678",
   is_manager: false
 )
