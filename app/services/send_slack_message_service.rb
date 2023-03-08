@@ -4,7 +4,7 @@ class SendSlackMessageService
   def initialize(attributes)
     @channel = attributes[:channel]
     @message = attributes[:message]
-    @token = attributes[:token]
+    @token = ENV["SLACK_API_TOKEN"]
   end
 
   def call
