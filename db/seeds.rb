@@ -14,6 +14,7 @@ UserTask.destroy_all
 Task.destroy_all
 Timesheet.destroy_all
 Goal.destroy_all
+Messages.destroy_all
 User.destroy_all
 Chatroom.destroy_all
 
