@@ -13,16 +13,12 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    # @usertask = UserTask.new
-    # @usertask.task_id = @task.id
-    # if current_user.is_manager?
-    #   @usertask.user_id = params[:task][:user_id]
-    # else
-    #   @usertask.user_id = current_user.id
-    # end
-
     authorize @task
+
     if @task.save
+      client = Slack::Web::Client.new
+      client.auth_test
+      client.chat_postMessage(channel: '#general', text: task_added_notification(@task))
       redirect_to users_path
     else
       render "users/dashboard", status: :unprocessable_entity, locals: { timesheet_new: Timesheet.new }
@@ -53,6 +49,20 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def task_added_notification(task)
+    assignee = []
+    task.users.each do |user|
+      assignee << user.name
+    end
+    due_date = task.due_date.strftime("%a %b %e at %l:%M %p")
+    <<~TEXT
+      :exclamation: *New task added*
+      Title: #{task.task_title}
+      Due date: #{due_date}
+      #{assignee.join(', ')} please check it and contact your manager if you have any questions.
+    TEXT
+  end
 
   def task_params
     params.require(:task).permit(:task_title, :description, :status, :due_date, user_ids: [])
