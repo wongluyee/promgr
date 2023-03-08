@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  require "sidekiq/web"
-  authenticate :user, ->(user) { user.is_manager? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
   devise_for :users
   root to: "users#dashboard"
 
