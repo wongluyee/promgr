@@ -40,8 +40,9 @@ class TasksController < ApplicationController
       render "tasks/edittaskform", status: :unprocessable_entity
     end
 
-    if @task.update_attributes(status: 'Done')
-
+    if @task.status == 'done'
+      message = BuildSlackMessageService.new.task_done_msg(@task)
+      SendSlackMessageService.new(channel: '#general', message: message).call
     end
   end
 
