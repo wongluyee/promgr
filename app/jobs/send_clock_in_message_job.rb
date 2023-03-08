@@ -3,6 +3,6 @@ class SendClockInMessageJob < ApplicationJob
 
   def perform
     message = BuildSlackMessageService.new.clock_in_reminder
-    SendSlackMessageService.new(channel: 'general', message: message)
+    SendSlackMessageService.new(channel: '#general', message: message).call
   end
 end

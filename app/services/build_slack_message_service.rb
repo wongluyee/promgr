@@ -1,11 +1,11 @@
 class BuildSlackMessageService
   attr_reader :task
 
-  def initialize(attributes = {})
-    @task = attributes[:task]
+  def initialize
   end
 
-  def call
+  def call(task)
+    @task = task
     [
       {
         "type": "section",
@@ -26,23 +26,27 @@ class BuildSlackMessageService
 
   def clock_in_reminder
     [
-     {
+      {
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "Remember to clock in."
-        }
+          "text": "Good morning everyone. Remember to clock in."
+        },
       },
       {
-        "accessory": {
-          "type": "button",
-          "text": {
-            "type": "plain_text",
-            "text": "Clock in now"
-          },
-          "value": "clock_in",
-          "action_id": "button"
-        }
+        "type": "actions",
+        "block_id": "actionblock1",
+        "elements": [
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Clock in now"
+            },
+            "style": "primary",
+            "value": "clock_in"
+          }
+        ]
       }
     ]
   end
