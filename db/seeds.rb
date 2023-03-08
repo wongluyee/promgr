@@ -14,9 +14,9 @@ UserTask.destroy_all
 Task.destroy_all
 Timesheet.destroy_all
 Goal.destroy_all
-Message.destroy_all
+# Message.destroy_all
 User.destroy_all
-Chatroom.destroy_all
+# Chatroom.destroy_all
 
 puts 'Creating users...'
 users = []
@@ -173,8 +173,8 @@ Goal.create!(
 #   status: "in_progress"
 # )
 
-puts "Creating chatroom..."
-Chatroom.create(name: "general")
+# puts "Creating chatroom..."
+# Chatroom.create(name: "general")
 
 puts "... created #{User.count} users, #{Task.count} tasks, #{UserTask.count} tasks for users,
-#{Timesheet.count} timesheets, and #{Goal.count} goals. Also, #{Chatroom.count} chatroom added."
+#{Timesheet.count} timesheets, and #{Goal.count} goals."
