@@ -39,6 +39,10 @@ class TasksController < ApplicationController
     else
       render "tasks/edittaskform", status: :unprocessable_entity
     end
+
+    if @task.update_attributes(status: 'Done')
+
+    end
   end
 
   def destroy
