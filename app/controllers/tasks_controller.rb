@@ -13,16 +13,10 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    # @usertask = UserTask.new
-    # @usertask.task_id = @task.id
-    # if current_user.is_manager?
-    #   @usertask.user_id = params[:task][:user_id]
-    # else
-    #   @usertask.user_id = current_user.id
-    # end
-
     authorize @task
+
     if @task.save
+      SlackClient.client.chat_postMessage(channel: '#general', blocks: BuildSlackMessageService.new(@task).call)
       redirect_to users_path
     else
       render "users/dashboard", status: :unprocessable_entity, locals: { timesheet_new: Timesheet.new }
