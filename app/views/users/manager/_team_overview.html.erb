@@ -21,7 +21,10 @@
             <span>Completed</span><br>
             <span>Tasks</span>
           </th>
-          <th scope="col" class="col-2"></th>
+          <th scope="col" class="col-2">
+            <span>Completed</span><br>
+            <span>Goals</span>
+          </th>
         </tr>
       </thead>
       <tbody class="table-body">
@@ -30,9 +33,11 @@
             <tr>
               <th scope="row">
                 <div class="d-flex">
-                  <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
+                  <%= link_to user_path(user), class: "text-decoration-none text-light" do %>
+                    <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
+                  <% end %>
                   <div>
-                    <span><%= user.name %></span><br>
+                    <span><%= link_to user.name,user_path(user), class: "text-decoration-none text-light" %></span><br>
                     <span><%= user.job_title %></span>
                   </div>
                 </div>
@@ -47,11 +52,7 @@
               <td><%= (employee_overtime/ 3600).round(1) %></td>
               <td><%= user.tasks.where(status: "In Progress").count %></td>
               <td><%= user.tasks.where(status: "done").count %></td>
-              <td class="pe-0">
-                <div class="d-flex justify-content-end align-items-center">
-                  <%= link_to "View Profile", user_path(user), class:"btn btn-button-color my-auto" %>
-                </div>
-              </td>
+              <td><%= user.goals.where(status: "met_target").count %> / <%= user.goals.count %> </td>
             </tr>
           <%end%>
         <%end%>
