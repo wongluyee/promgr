@@ -1,11 +1,11 @@
 class BuildSlackMessageService
   attr_reader :task
 
-  def initialize(task)
-    @task = task
+  def initialize
   end
 
-  def call
+  def call(task)
+    @task = task
     [
       {
         "type": "section",
@@ -20,6 +20,33 @@ class BuildSlackMessageService
           "type": "mrkdwn",
           "text": "#{task.users.pluck(:name).join(', ')} please check the task details and contact your manager if you have any questions.\n\n<https://www.promgr.tech/dashboard|View task details>"
         }
+      }
+    ]
+  end
+
+  def clock_in_reminder
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "Good morning everyone. Remember to clock in."
+        },
+      },
+      {
+        "type": "actions",
+        "block_id": "actionblock1",
+        "elements": [
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Clock in now"
+            },
+            "style": "primary",
+            "value": "clock_in"
+          }
+        ]
       }
     ]
   end
