@@ -16,9 +16,7 @@ class TasksController < ApplicationController
     authorize @task
 
     if @task.save
-      client = Slack::Web::Client.new
-      client.auth_test
-      client.chat_postMessage(channel: '#general', text: task_added_notification(@task))
+      SlackClient.client.chat_postMessage(channel: '#general', text: task_added_notification(@task))
       redirect_to users_path
     else
       render "users/dashboard", status: :unprocessable_entity, locals: { timesheet_new: Timesheet.new }
@@ -60,7 +58,7 @@ class TasksController < ApplicationController
       :exclamation: *New task added*
       Title: #{task.task_title}
       Due date: #{due_date}
-      #{assignee.join(', ')} please check it and contact your manager if you have any questions.
+      #{assignee.join(', ')} please check the task details and contact your manager if you have any questions.
     TEXT
   end
 
