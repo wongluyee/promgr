@@ -48,20 +48,6 @@ class TasksController < ApplicationController
 
   private
 
-  def task_added_notification(task)
-    assignee = []
-    task.users.each do |user|
-      assignee << user.name
-    end
-    due_date = task.due_date.strftime("%a %b %e at %l:%M %p")
-    <<~TEXT
-      :exclamation: *New task added*
-      Title: #{task.task_title}
-      Due date: #{due_date}
-      #{assignee.join(', ')} please check the task details and contact your manager if you have any questions.
-    TEXT
-  end
-
   def task_params
     params.require(:task).permit(:task_title, :description, :status, :due_date, user_ids: [])
   end
