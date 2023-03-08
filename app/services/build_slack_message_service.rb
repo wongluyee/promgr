@@ -1,9 +1,6 @@
 class BuildSlackMessageService
   attr_reader :task
 
-  def initialize
-  end
-
   def call(task)
     @task = task
     [

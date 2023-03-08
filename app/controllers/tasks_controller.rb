@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
     if @task.save
       # SlackClient.client.chat_postMessage(channel: '#general', blocks: BuildSlackMessageService.new(@task).call)
-      message = BuildSlackMessageService.new(@task).call
+      message = BuildSlackMessageService.new.call(@task)
       SendSlackMessageService.new(channel: '#general', message: message).call
       redirect_to users_path
     else
