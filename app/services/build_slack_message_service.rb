@@ -23,5 +23,4 @@ class BuildSlackMessageService
       }
     ]
   end
-
 end
