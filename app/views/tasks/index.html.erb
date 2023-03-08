@@ -7,10 +7,10 @@
   <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
     <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column align-items-center">
         <%= date.day %>
         <% tasks.each do |task| %>
-          <p class="badge rounded-pill text-bg-light"><%= task.task_title %></p>
+          <p class="badge rounded-pill text-bg-light w-50 text-truncate"><%= task.task_title %></p>
         <% end %>
       </div>
     <% end %>
