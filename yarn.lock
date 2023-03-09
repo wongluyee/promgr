@@ -715,6 +715,11 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
+sortable-tablesort@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sortable-tablesort/-/sortable-tablesort-2.0.0.tgz#7878ea6f33207cf3679eb7dec08a3c6b42375223"
+  integrity sha512-ZbY9Om07DoCePYpEg5NyKBWjY0Z4EcRjEpNHMPYlNvVf1EEkMcZMez2+OjhZ4dqw/3nJPthv6L0+bk+GTmFkAw==
+
 source-map-support@~0.5.20:
   version "0.5.21"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
