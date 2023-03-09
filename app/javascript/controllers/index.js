@@ -12,3 +12,6 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TimerController from "./timer_controller"
+application.register("timer", TimerController)

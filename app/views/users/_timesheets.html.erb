@@ -1,20 +1,74 @@
 <div class="div2 mt-4 mb-0 me-5 p-3 boxes text-light d-flex flex-column justify-content-center align-items-center clock">
- <script>
- function myClock() {
-  setTimeout(function() {
-    const d = new Date();
-    const n = d.toLocaleTimeString();
-    document.getElementById("clock").innerHTML = n;
-    myClock();
-  }, 1000)
+ <%# <script>
+
+ window.onload = function () {
+
+  var seconds = 00;
+  var tens = 00;
+  var appendTens = document.getElementById("tens")
+  var appendSeconds = document.getElementById("seconds")
+  var buttonStart = document.getElementById('clock-in');
+  var buttonStop = document.getElementById('clock-out');
+  // var buttonReset = document.getElementById('button-reset');
+  var Interval ;
+
+  buttonStart.onclick = function() {
+
+    clearInterval(Interval);
+     Interval = setInterval(startTimer, 10);
+  }
+
+    buttonStop.onclick = function() {
+       clearInterval(Interval);
+  }
+
+
+  buttonReset.onclick = function() {
+     clearInterval(Interval);
+    tens = "00";
+  	seconds = "00";
+    appendTens.innerHTML = tens;
+  	appendSeconds.innerHTML = seconds;
+  }
+
+
+
+  function startTimer () {
+    tens++;
+
+    if(tens <= 9){
+      appendTens.innerHTML = "0" + tens;
+    }
+
+    if (tens > 9){
+      appendTens.innerHTML = tens;
+
+    }
+
+    if (tens > 99) {
+      console.log("seconds");
+      seconds++;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 0;
+      appendTens.innerHTML = "0" + 0;
+    }
+
+    if (seconds > 9){
+      appendSeconds.innerHTML = seconds;
+    }
+
+  }
+
+
 }
-myClock();  </script>
+  </script> %>
+
   <h5>Timesheets</h5>
   <div class="clock-in-out-button">
-    <% if current_user.timesheets.last.time_in.to_date != @today %>
+    <% if @timesheet == nil %>
       <%= render 'timesheets/clock_in' %>
-    <% elsif @timesheet.time_out == nil %>
-      <%= render 'timesheets/clock_out' %>
+    <% elsif @timesheet&.time_out == nil %>
+      <%= render 'timesheets/clock_out', timesheet: @timesheet %>
     <% else  %>
       <h3> Good work today <%= current_user.name %> 🎉</h3>
     <% end %>
