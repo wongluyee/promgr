@@ -58,7 +58,6 @@ class UsersController < ApplicationController
     @today = Date.today
     @timesheet_new = Timesheet.new
     @timesheet = current_user.timesheets.find_by(time_in: Date.today.all_day)
-
   end
 
   def check_attendance
