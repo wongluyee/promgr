@@ -8,7 +8,7 @@
   <div class="d-flex flex-row">
     <% @users.each do |user| %>
       <% unless user.is_manager %>
-        <% if @timesheet = nil %>
+        <% if user.timesheet.time_in.present? %>
         <%= cl_image_tag user.photo.key, class: "avatar-bordered border-success shadow" %>
         <% else %>
         <%= cl_image_tag user.photo.key, class: "avatar-bordered border-danger shadow" %>
