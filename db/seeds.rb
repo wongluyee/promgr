@@ -114,7 +114,6 @@ file = URI.open(photo_url)
 parker.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 parker.save
 
-
 jordan = User.new(
   name: "Jordan",
   email: "jordan@ocean.com",
@@ -131,8 +130,6 @@ file = URI.open(photo_url)
 jordan.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 jordan.save
 
-
-
 charlie = User.new(
   name: "Charlie",
   email: "charlie@parker.com",
@@ -148,7 +145,6 @@ photo_url = "https://this-person-does-not-exist.com#{src}"
 file = URI.open(photo_url)
 charlie.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 charlie.save
-
 
 jupiter = User.new(
   name: "Jupiter",
@@ -181,8 +177,6 @@ photo_url = "https://this-person-does-not-exist.com#{src}"
 file = URI.open(photo_url)
 halston.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 halston.save
-
-
 
 users << User.where(is_manager: false)
 # user = users.sample
@@ -281,7 +275,6 @@ Task.create!(
   status: "In Progress"
 )
 
-
 tasks << Task.all
 
 puts 'Creating user tasks...'
@@ -297,7 +290,6 @@ tasks = Task.all.shuffle
     user: User.where.not(id: user.id).sample,
     task: task
   )
-
 end
 
 puts 'Creating timesheets...'
@@ -311,8 +303,8 @@ User.all.each do |user|
       user: user,
       attendance: "working",
       comment: "Working on the project",
-      time_in: DateTime.parse("#{date} 09:#{rand(0...15)}:00"),
-      time_out: DateTime.parse("#{date} 18:#{rand(0...30)}:00")
+      time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
+      time_out: DateTime.parse("#{date} 09:#{rand(0...30)}:00")
     )
     date -= 1
   end
@@ -338,7 +330,6 @@ Goal.create!(
   description: "To increase the net income by 10% for projects in charge.",
   status: "in_progress"
 )
-
 
 # Goal.create!(
 #   user: users[3],

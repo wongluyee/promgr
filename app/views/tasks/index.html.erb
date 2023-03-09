@@ -6,28 +6,24 @@
   <% end %>
   <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
-
     <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
       <div class="d-flex flex-column align-items-center" style= "width:100px">
         <%= date.day %>
-
         <% if tasks.any? %>
-        <div class="dropdown">
-  <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:150px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    <%=tasks.first.task_title%>
-  </button>
-          <% if tasks.count > 1 %>
-          <p><%=tasks.count %> task</p>
-          <% end %>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <% tasks.each do |task| %>
-           <li><a class="dropdown-item" href="#"><%= task.task_title %></a></li>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:150px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <%=tasks.first.task_title%>
+            </button>
+            <% if tasks.count > 1 %>
+              <p><%=tasks.count %> task</p>
+            <% end %>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <% tasks.each do |task| %>
+                <li><a class="dropdown-item" href="#"><%= task.task_title %></a></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-  </ul>
-</div>
-
-        <% end %>
-
       </div>
     <% end %>
     <div class="boxes p-3 text-light">
@@ -35,8 +31,8 @@
       <div class="container d-flex flex-column gap-3">
         <% @tasks.order(:due_date).each do |task| %>
           <%= render 'tasks/edittaskform', task: task %>
-          <div class="row rounded text-dark bg-light">
-            <div class="col d-flex align-items-center justify-content-between p-1">
+          <div class="row rounded text-light bg-primary bg-gradient bg-opacity-25">
+            <div class="col d-flex align-items-center justify-content-between px-3">
               <div>
                 <div><b><%= task.task_title %></b></div>
                 <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
@@ -52,17 +48,17 @@
                   <% end %>
                 </div>
                 <div>
-                  <button class="btn btn-dark mx-1 rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
+                  <button class="btn btn-outline-light mx-1 rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%="#taskmodel#{task.id}"%> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
                 </div>
                 <div>
-                  <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-dark rounded-pill" do%>
+                  <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "btn btn-outline-light rounded-pill" do%>
                     <i class="fa-solid fa-trash-can"></i>
                   <% end %>
                 </div>
                 <div>
                   <%= simple_form_for task,data: {action: "submit->insert-in-list#update"} do |f| %>
                     <%= f.input :status, as: :hidden, input_html: { value: 'done'} %>
-                    <%= button_tag class: "btn btn-dark mb-3 ms-1 rounded-pill" do %>
+                    <%= button_tag class: "btn btn-outline-light mb-3 ms-1 rounded-pill" do %>
                       <i class="fa-regular fa-circle-check"></i>
                     <% end %>
                   <% end %>
