@@ -15,7 +15,7 @@ class BuildSlackMessageService
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "#{task.users.pluck(:name).join(', ')} please check the task details and contact your manager if you have any questions.\n\n<https://www.promgr.tech/dashboard|View task details>"
+          "text": "#{task.users.pluck(:name).join(', ')} please check the task details and contact your manager if you have any questions.\n\n<https://www.promgr.tech/tasks|View tasks calendar>"
         }
       }
     ]
