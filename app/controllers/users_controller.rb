@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   def clock_in_out
     @today = Date.today
     @timesheet_new = Timesheet.new
-    @timesheet = current_user.timesheets.last
+    @timesheet = current_user.timesheets.find_by(time_in: Date.today.all_day)
   end
 
   def check_attendance

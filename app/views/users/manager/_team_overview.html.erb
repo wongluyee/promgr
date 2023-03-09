@@ -9,13 +9,13 @@
      <%= render 'users/addmeetingform' %>
   </div>
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table text-light">
+    <table class="table text-light sortable">
       <thead class="table-dark">
         <tr>
-          <th scope="col" class="col-4 sticky-top"></th>
+          <th scope="col" class="col-4 sticky-top no-sort"></th>
           <th scope="col" class="col-2 sticky-top">
             <span>Total Overtime</span><br>
-            <span> this month</span>
+            <span> this month (hrs)</span>
           </th>
           <th scope="col" class="col-2 sticky-top">
             <span>Ongoing</span><br>
@@ -35,14 +35,14 @@
         <% @users.each do |user| %>
           <% unless user.is_manager %>
             <tr>
-              <th scope="row">
+              <th class="no-sort" scope="row">
                 <div class="d-flex">
                   <%= link_to user_path(user), class: "text-decoration-none text-light" do %>
                     <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
                   <% end %>
                   <div>
                     <span><%= link_to user.name,user_path(user), class: "text-decoration-none text-light" %></span><br>
-                    <span><%= user.job_title %></span>
+                    <h6 class="text-white-50 fw-lighter fst-italic" ><%= user.job_title %></h6>
                   </div>
                 </div>
               </th>

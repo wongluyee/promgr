@@ -1,6 +1,11 @@
-class BuildSlackMessageService
-  def timeout(timesheet)
+class BuildTimeoutMessageService
+  attr_reader :timesheet
+
+  def initialize(timesheet)
     @timesheet = timesheet
+  end
+
+  def call
     [
       {
         "type": "section",

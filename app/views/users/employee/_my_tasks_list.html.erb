@@ -11,15 +11,15 @@
       <div class="container d-flex flex-column gap-3">
         <% @tasks.order(:due_date).each do |task| %>
           <%= render 'tasks/edittaskform', task: task %>
-          <div class="row rounded text-dark bg-light">
+          <div class="row rounded text-light bg-primary bg-opacity-25" style="backgroud-color: #9DA3C6">
             <div class="col d-flex align-items-center justify-content-between p-1">
               <div>
                 <div><b><%= task.task_title %></b></div>
                 <div>Due: <%= task.due_date.to_s.split(" ")[0] %> &nbsp; <%= task.status %></div>
               </div>
               <div>
-                <button class="btn btn-dark rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
-                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-dark rounded-pill" do %>
+                <button class="btn btn-outline-light mx-1 rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
+                <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-light mx-1 rounded-pill" do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>
