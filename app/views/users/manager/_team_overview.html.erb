@@ -8,7 +8,7 @@
     <table class="table text-light sortable">
       <thead class="table-dark">
         <tr>
-          <th scope="col" class="col-4 sticky-top"></th>
+          <th scope="col" class="col-4 sticky-top no-sort"></th>
           <th scope="col" class="col-2 sticky-top">
             <span>Total Overtime</span><br>
             <span> this month (hrs)</span>
@@ -31,7 +31,7 @@
         <% @users.each do |user| %>
           <% unless user.is_manager %>
             <tr>
-              <th scope="row">
+              <th class="no-sort" scope="row">
                 <div class="d-flex">
                   <%= link_to user_path(user), class: "text-decoration-none text-light" do %>
                     <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
