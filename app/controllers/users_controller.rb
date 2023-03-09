@@ -61,6 +61,8 @@ class UsersController < ApplicationController
     @today = Date.today
     @timesheet_new = Timesheet.new
     @timesheet = current_user.timesheets.find_by(time_in: Date.today.all_day)
+    @timesheets = Timesheet.where(time_in: Date.today.all_day).where.not(user: current_user).distinct
+    @not_online = User.where.not(id: current_user).where.not(id: @timesheets.pluck(:user_id))
   end
 
   def check_attendance

@@ -6,14 +6,17 @@
       <p><%= @greeting_message_employee %></p>
     <% end %>
   <div class="d-flex flex-row">
-    <% @users.each do |user| %>
-      <% unless user.is_manager %>
-        <% if user.timesheet.time_in.present? %>
-        <%= cl_image_tag user.photo.key, class: "avatar-bordered border-success shadow" %>
-        <% else %>
-        <%= cl_image_tag user.photo.key, class: "avatar-bordered border-danger shadow" %>
-        <% end %>
-      <% end %>
+    <% @timesheets.each do |timesheet| %>
+
+      <%# <% user.timesheets.each do |timesheet| %>
+        <%= cl_image_tag timesheet.user.photo.key, class: "avatar-bordered border-success shadow position-relative" %>
+    <% end %>
+    <% @not_online.each do |user| %>
+    <div class="avatar position-relative">
+     <%= cl_image_tag user.photo.key, class: "avatar-bordered border-danger shadow" %>
+      <span class="position-absolute top-30 start-60 translate-middle p-2 bg-danger border border-light rounded-circle">
+    <span class="visually-hidden">New alerts</span>
+    </div>
     <% end %>
   </div>
 </div>
