@@ -9,6 +9,7 @@
     <% @users.each do |user| %>
       <% unless user.is_manager %>
         <% if @timesheet.time_in == nil %>
+        <% raise %>
         <%= cl_image_tag user.photo.key, class: "avatar-bordered border-danger shadow" %>
         <% else %>
         <%= cl_image_tag user.photo.key, class: "avatar-bordered border-success shadow" %>
