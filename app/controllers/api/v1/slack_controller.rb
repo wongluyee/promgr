@@ -12,8 +12,9 @@ class Api::V1::SlackController < ActionController::API
     timesheet = user.timesheets.find_by(time_in: Date.today.all_day, user: user)
     if timesheet
       # update
+      timesheet.update(time_out: DateTime.now)
     else
-      p Timesheet.create(user: user, time_in: DateTime.now)
+      Timesheet.create(user: user, time_in: DateTime.now)
     end
   end
 end
