@@ -18,11 +18,8 @@ export default class extends Controller {
       minutes = (minutes < 10) ? "0" + minutes : minutes;
       hourTarget.innerHTML = hours
       minTarget.innerHTML = minutes
-
     }, 1000);
     console.log(this.hourTarget)
     console.log(this.minTarget)
-
   }
-
 }
