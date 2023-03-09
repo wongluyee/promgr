@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     skip_authorization
     @users = policy_scope(User)
 
+
     # To display greeting message to manager
     check_attendance
 
@@ -21,7 +22,6 @@ class UsersController < ApplicationController
 
     # To display "Team overtime" bar chart
     overtime
-
     # To add new task
     @task = Task.new
 
