@@ -63,14 +63,19 @@
 }
   </script> %>
 
-  <h5>Timesheets</h5>
+  <h5>Working Time</h5>
   <div class="clock-in-out-button">
     <% if @timesheet == nil %>
       <%= render 'timesheets/clock_in' %>
     <% elsif @timesheet&.time_out == nil %>
       <%= render 'timesheets/clock_out', timesheet: @timesheet %>
     <% else  %>
-      <h3> Good work today <%= current_user.name %> 🎉</h3>
+      <h3>Well done <%= current_user.name %> 🎉</h3>
+      <% if ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 3600).abs < 1 %>
+        <h5>You worked for <%= ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 60).abs.round %> minutes</h5>
+      <% else %>
+      <h5>You worked for <%= ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 3600).abs.round %> hours</h5>
+      <% end %>
     <% end %>
   </div>
 </div>
