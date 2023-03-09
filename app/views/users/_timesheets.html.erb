@@ -70,7 +70,7 @@
     <% elsif @timesheet&.time_out == nil %>
       <%= render 'timesheets/clock_out', timesheet: @timesheet %>
     <% else  %>
-      <h3>Well done <%= current_user.name %> 🎉</h3>
+      <h4 class="text-center">Well done <%= current_user.name %> 🎉</h4>
       <% if ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 3600).abs < 1 %>
         <h5>You worked for <%= ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 60).abs.round %> minutes</h5>
       <% else %>
