@@ -301,16 +301,18 @@ today = Date.today
 User.all.each do |user|
   date = today - 1
   until date == today - 30
-    # 30.times do |index|
-    # day = index + 1
-    Timesheet.create!(
-      user: user,
-      attendance: "working",
-      comment: "Working on the project",
-      time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
-      time_out: DateTime.parse("#{date} 09:#{rand(0...30)}:00")
-    )
-    date -= 1
+    if date.wday != 0 && date.wday != 6
+      Timesheet.create!(
+        user: user,
+        attendance: "working",
+        comment: "Working on the project",
+        time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
+        time_out: DateTime.parse("#{date} 09:#{rand(0...30)}:00")
+      )
+      date -= 1
+    else
+      date -= 1
+    end
   end
 end
 
