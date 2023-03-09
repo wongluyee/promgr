@@ -1,14 +1,18 @@
 <div class="div5 boxes text-light p-5 mx-5 mb-5">
   <div class= "d-flex justify-content-between align-items-center mb-4">
     <h5>Team Overview</h5>
+    <div>
     <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i> Add Task</button>
+      <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExampleMeeting" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i> Add Meeting</button>
+      </div>
     <%= render 'users/addtaskform' %>
+     <%= render 'users/addmeetingform' %>
   </div>
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table text-light sortable">
       <thead class="table-dark">
         <tr>
-          <th scope="col" class="col-4 sticky-top"></th>
+          <th scope="col" class="col-4 sticky-top no-sort"></th>
           <th scope="col" class="col-2 sticky-top">
             <span>Total Overtime</span><br>
             <span> this month (hrs)</span>
@@ -31,7 +35,7 @@
         <% @users.each do |user| %>
           <% unless user.is_manager %>
             <tr>
-              <th scope="row">
+              <th class="no-sort" scope="row">
                 <div class="d-flex">
                   <%= link_to user_path(user), class: "text-decoration-none text-light" do %>
                     <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
