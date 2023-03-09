@@ -8,7 +8,7 @@ class BuildSlackMessageService
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":exclamation: *New task added*\n*Title: #{task.task_title}*\nDue date: #{task.due_date.strftime("%a %b %e at %l:%M %p")}"
+          "text": ":exclamation: *New task added*\n*Title: #{task.task_title}*\n*Due date: #{task.due_date.strftime("%a %b %e at %l:%M %p")}*"
         }
       },
       {
