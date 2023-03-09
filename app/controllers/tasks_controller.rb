@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     if @task.save
       # SlackClient.client.chat_postMessage(channel: '#general', blocks: BuildSlackMessageService.new(@task).call)
       message = BuildSlackMessageService.new.call(@task)
-      SendSlackMessageService.new(channel: '#general', message: message).call
+      SendSlackMessageService.new(channel: '#tasks-notifications', message: message).call
       redirect_to users_path
     else
       render "users/dashboard", status: :unprocessable_entity, locals: { timesheet_new: Timesheet.new }
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
     if @task.status == 'done'
       message = BuildSlackMessageService.new.task_done_msg(@task)
-      SendSlackMessageService.new(channel: '#general', message: message).call
+      SendSlackMessageService.new(channel: '#tasks-notifications', message: message).call
     end
   end
 
