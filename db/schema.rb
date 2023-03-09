@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_091826) do
+=======
 ActiveRecord::Schema[7.0].define(version: 2023_03_09_071122) do
+>>>>>>> master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +63,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_071122) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
+  create_table "meetings", force: :cascade do |t|
+    t.string "task_title"
+    t.date "due_date"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "task_title"
     t.text "description"
@@ -78,6 +91,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_071122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_timesheets_on_user_id"
+  end
+
+  create_table "user_meetings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "meeting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meeting_id"], name: "index_user_meetings_on_meeting_id"
+    t.index ["user_id"], name: "index_user_meetings_on_user_id"
   end
 
   create_table "user_tasks", force: :cascade do |t|
@@ -109,6 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_071122) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "goals", "users"
   add_foreign_key "timesheets", "users"
+  add_foreign_key "user_meetings", "meetings"
+  add_foreign_key "user_meetings", "users"
   add_foreign_key "user_tasks", "tasks"
   add_foreign_key "user_tasks", "users"
 end
