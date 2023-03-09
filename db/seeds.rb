@@ -311,8 +311,8 @@ User.all.each do |user|
       user: user,
       attendance: "working",
       comment: "Working on the project",
-      time_in: DateTime.parse("#{date} 09:#{rand(0...15)}:00"),
-      time_out: DateTime.parse("#{date} 18:#{rand(0...30)}:00")
+      time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
+      time_out: DateTime.parse("#{date} 09:#{rand(0...30)}:00")
     )
     date -= 1
   end
