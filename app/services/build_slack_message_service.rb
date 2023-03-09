@@ -8,14 +8,27 @@ class BuildSlackMessageService
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":exclamation: *New task added*\n*Title: #{task.task_title}*\nDue date: #{task.due_date.strftime("%a %b %e at %l:%M %p")}"
+          "text": ":exclamation: *New task added*\n*Title: #{task.task_title}*\n*Due date: #{task.due_date.strftime("%a %b %e at %l:%M %p")}*"
         }
       },
       {
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "#{task.users.pluck(:name).join(', ')} please check the task details and contact your manager if you have any questions.\n\n<https://www.promgr.tech/dashboard|View task details>"
+          "text": "#{task.users.pluck(:name).join(', ')} please check the task details and contact your manager if you have any questions.\n\n<https://www.promgr.tech/tasks|View tasks calendar>"
+        }
+      }
+    ]
+  end
+
+  def task_done_msg(task)
+    @task = task
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": ":fireworks: *Task Completed!*\n*#{task.task_title} marked as done,*\n\nContact your manager if you have any questions.\n\n<https://www.promgr.tech/tasks|View tasks calendar>"
         }
       }
     ]
@@ -28,7 +41,7 @@ class BuildSlackMessageService
         "text": {
           "type": "mrkdwn",
           "text": "Good morning everyone. Remember to clock in."
-        },
+        }
       },
       {
         "type": "actions",
@@ -44,6 +57,32 @@ class BuildSlackMessageService
             "value": "clock_in"
           }
         ]
+      }
+    ]
+  end
+
+  def timelog(timesheet)
+    @timesheet = timesheet
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": " #{@timesheet.user.name} logged in at #{@timesheet.time_in} "
+        }
+      }
+    ]
+  end
+
+  def timeout(timesheet)
+    @timesheet = timesheet
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": " #{@timesheet.user.name} logged out at #{@timesheet.time_out} "
+        }
       }
     ]
   end

@@ -22,7 +22,9 @@ class TimesheetsController < ApplicationController
     @timesheet.user = current_user
     authorize @timesheet
     if @timesheet.save
-      redirect_to dashboard_path
+      message = BuildSlackMessageService.new.timelog(@timesheet)
+      SendSlackMessageService.new(channel: '#clock-in-out-channel', message: message).call
+      redirect_to dashboard_path, notice: "Your clock in record is sent in Slack channel #clock-in-out-channel."
     else
       render "users/dashboard", status: :unprocessable_entity
     end
@@ -36,8 +38,12 @@ class TimesheetsController < ApplicationController
     @timesheet = Timesheet.find(params[:id])
     @timesheet.time_out = DateTime.now
     @timesheet.update(timesheet_params)
+
+    message = BuildSlackMessageService.new.timeout(@timesheet)
+    SendSlackMessageService.new(channel: '#clock-in-out-channel', message: message).call
+
     authorize @timesheet
-    redirect_to dashboard_path
+    redirect_to dashboard_path, notice: "Your clock out record is sent in Slack channel #clock-in-out-channel."
   end
 
   private
