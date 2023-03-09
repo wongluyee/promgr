@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   def index
     @tasks = policy_scope(Task)
     @user = current_user
-    @meetings = Meeting.all
   end
 
   def new
