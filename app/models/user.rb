@@ -10,10 +10,6 @@ class User < ApplicationRecord
   has_many :user_tasks, dependent: :destroy
   has_many :tasks, through: :user_tasks
 
-  has_many :user_meetings, dependent: :destroy
-  has_many :meetings, through: :user_meetings
-
-
   validates :name, presence: true
   validates :job_title, presence: true
   # validates :is_manager, presence: true
