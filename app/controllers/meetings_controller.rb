@@ -8,7 +8,6 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(meeting_params)
     authorize @meeting
 
-
     if @meeting.save
       # SlackClient.client.chat_postMessage(channel: '#general', blocks: BuildSlackMessageService.new(@task).call)
       redirect_to users_path
@@ -22,5 +21,4 @@ class MeetingsController < ApplicationController
   def meeting_params
     params.require(:meeting).permit(:task_title, :due_date, :start_time, :end_time, user_ids: [])
   end
-
 end
