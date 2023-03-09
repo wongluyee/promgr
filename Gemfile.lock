@@ -98,7 +98,6 @@ GEM
       aws_cf_signer
       rest-client (>= 2.0.0)
     concurrent-ruby (1.2.2)
-    connection_pool (2.3.0)
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.1)
@@ -136,6 +135,7 @@ GEM
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
+    htmlbeautifier (1.4.2)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -226,8 +226,6 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    redis-client (0.13.0)
-      connection_pool
     regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -254,13 +252,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (7.0.6)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.11.0)
-    sidekiq-failures (1.0.4)
-      sidekiq (>= 4.0.0)
     simple_calendar (2.4.3)
       rails (>= 3.0)
     slack-ruby-client (2.0.0)
@@ -328,6 +319,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass (~> 6.1)
+  htmlbeautifier
   httparty
   jbuilder
   jsbundling-rails
@@ -337,8 +329,6 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   sassc-rails
   selenium-webdriver
-  sidekiq
-  sidekiq-failures (~> 1.0)
   simple_calendar (~> 2.4)
   simple_form!
   slack-ruby-client

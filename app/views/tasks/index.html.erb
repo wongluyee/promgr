@@ -6,16 +6,10 @@
   <% end %>
   <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
-
-
-
-    <%= month_calendar attribute: :due_date, events:@tasks do |date, tasks| %>
+   <%= month_calendar attribute: :due_date, events:@tasks do |date, tasks| %>
       <div class="d-flex flex-column align-items-center" style= "width:100px">
         <%= date.day %>
-
              <% matching_meetings = @meetings.select { |m| m.due_date == date } %>
-
-
               <% if matching_meetings.any? %>
               <div class="dropdown">
         <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:150px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,20 +21,7 @@
               <% end %>
         </ul>
       </div>
-
               <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
         <% if tasks.any? %>
         <div class="dropdown">
   <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:150px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,13 +33,10 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
   <% tasks.each do |task| %>
            <li><a class="dropdown-item" href="#"><%= task.task_title %></a></li>
-
         <% end %>
   </ul>
 </div>
-
         <% end %>
-
       </div>
     <% end %>
     <div class="boxes p-3 text-light">
