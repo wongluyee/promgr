@@ -24,6 +24,7 @@ users = []
 
 josh = User.new(
   name: "Josh",
+  slack_name: "joshuang_443",
   email: "josh@ng.com",
   job_title: "Manager",
   password: "12345678",
@@ -35,6 +36,7 @@ josh = User.new(
 
   mehdi = User.new(
     name: "Mehdi",
+    slack_name: "mehdi.benjdi",
     email: "elmehdi@ben.com",
     job_title: "Senior Financial Analyst II",
     password: "12345678",
@@ -46,6 +48,7 @@ josh = User.new(
 
 joe = User.new(
   name: "Joe",
+  slack_name: "joesando",
   email: "joe@luc.com",
   job_title: "Senior Financial Analyst II",
   password: "12345678",
@@ -57,6 +60,7 @@ joe = User.new(
 
 luyee = User.new(
   name: "Luyee",
+  slack_name: "wongluyee1015",
   email: "luyee@wong.com",
   job_title: "Senior Financial Analyst II",
   password: "12345678",
