@@ -66,6 +66,7 @@ class UsersController < ApplicationController
     today = Date.today
     @absent_employee = []
     # 2. Check the time_in record for today
+
     employees.each do |employee|
       ordered_timesheets = employee.timesheets.order(:time_in)
       if employee.timesheets != [] && ordered_timesheets.last.time_in.to_date != today
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
     if @absent_employee.empty?
       @greeting_message = "All of your team members are here today!"
     else
-      @greeting_message = "#{@absent_employee.join(', ')} is not here yet."
+      @greeting_message = "#{@absent_employee.join(', ')} is not yet here."
     end
   end
 

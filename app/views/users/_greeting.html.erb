@@ -1,8 +1,19 @@
 <div class="boxes div1 p-3 text-light mt-4 ms-5 d-flex flex-column justify-content-center">
   <h4>Hello <%= current_user.name %>,</h4>
-  <% if current_user.is_manager? %>
-    <p><%= @greeting_message %></p>
-  <% else %>
-    <p><%= @greeting_message_employee %></p>
-  <% end %>
+    <% if current_user.is_manager? %>
+      <p><%= @greeting_message %></p>
+    <% else %>
+      <p><%= @greeting_message_employee %></p>
+    <% end %>
+  <div class="d-flex flex-row">
+    <% @users.each do |user| %>
+      <% unless user.is_manager %>
+        <% if @timesheet.time_in == nil %>
+        <%= cl_image_tag user.photo.key, class: "avatar-bordered border-danger shadow" %>
+        <% else %>
+        <%= cl_image_tag user.photo.key, class: "avatar-bordered border-success shadow" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
