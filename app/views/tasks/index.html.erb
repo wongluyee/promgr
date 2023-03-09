@@ -7,11 +7,11 @@
   <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
     <%= month_calendar(attribute: :due_date, events: @tasks) do |date, tasks| %>
-      <div class="d-flex flex-column align-items-center" style= "width:100px">
+      <div class="d-flex flex-column align-items-center" style= "width:130px">
         <%= date.day %>
         <% if tasks.any? %>
           <div class="dropdown">
-            <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:150px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <%= tasks.first.task_title %>
             </button>
             <% if tasks.count > 1 %>
