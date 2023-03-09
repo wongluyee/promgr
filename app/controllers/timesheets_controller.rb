@@ -48,8 +48,6 @@ class TimesheetsController < ApplicationController
 
   private
 
-
-
   def timesheet_params
     params.require(:timesheet).permit(:time_in, :time_out)
   end
