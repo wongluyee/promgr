@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
     if @task.status == 'done'
       message = BuildSlackMessageService.new.task_done_msg(@task)
-      SendSlackMessageService.new(channel: '#general', message: message).call
+      SendSlackMessageService.new(channel: '#tasks-notifications', message: message).call
     end
   end
 

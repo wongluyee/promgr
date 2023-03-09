@@ -28,7 +28,7 @@ class BuildSlackMessageService
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":fireworks: *Task Completed!*\n*#{task.task_title} marked as done,*\n\nContact your manager if you have any questions.\n\n<https://www.promgr.tech/dashboard|View task details>"
+          "text": ":fireworks: *Task Completed!*\n*#{task.task_title} marked as done,*\n\nContact your manager if you have any questions.\n\n<https://www.promgr.tech/tasks|View tasks calendar>"
         }
       }
     ]
