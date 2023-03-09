@@ -1,8 +1,8 @@
-class SendClockInMessageJob < ApplicationJob
+class SendClockOutMessageJob < ApplicationJob
   queue_as :default
 
   def perform
-    message = BuildClockInMessageService.new.call
+    message = BuildClockOutMessageService.new.call
     SendSlackMessageService.new(channel: '#general', message: message).call
   end
 end

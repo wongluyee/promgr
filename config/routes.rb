@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   # resources :chatrooms, only: :show do
   #   resources :messages, only: :create
   # end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post '/slack', to: 'slack#webhook', as: :merch
+    end
+  end
 end
