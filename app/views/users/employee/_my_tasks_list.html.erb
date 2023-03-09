@@ -11,7 +11,7 @@
       <div class="container d-flex flex-column gap-3">
         <% @tasks.order(:due_date).each do |task| %>
           <%= render 'tasks/edittaskform', task: task %>
-          <div class="row rounded text-light bg-primary bg-gradient bg-opacity-25" style="backgroud-color: #9DA3C6">
+          <div class="row rounded text-light bg-primary bg-opacity-25" style="backgroud-color: #9DA3C6">
             <div class="col d-flex align-items-center justify-content-between p-1">
               <div>
                 <div><b><%= task.task_title %></b></div>
