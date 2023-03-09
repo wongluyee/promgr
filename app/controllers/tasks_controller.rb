@@ -39,6 +39,11 @@ class TasksController < ApplicationController
     else
       render "tasks/edittaskform", status: :unprocessable_entity
     end
+
+    if @task.status == 'done'
+      message = BuildSlackMessageService.new.task_done_msg(@task)
+      SendSlackMessageService.new(channel: '#general', message: message).call
+    end
   end
 
   def destroy
