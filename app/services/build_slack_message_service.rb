@@ -41,7 +41,7 @@ class BuildSlackMessageService
         "text": {
           "type": "mrkdwn",
           "text": "Good morning everyone. Remember to clock in."
-        },
+        }
       },
       {
         "type": "actions",
@@ -69,7 +69,7 @@ class BuildSlackMessageService
         "text": {
           "type": "mrkdwn",
           "text": " #{@timesheet.user.name} logged in at #{@timesheet.time_in} "
-        },
+        }
       }
     ]
   end
@@ -82,7 +82,7 @@ class BuildSlackMessageService
         "text": {
           "type": "mrkdwn",
           "text": " #{@timesheet.user.name} logged out at #{@timesheet.time_out} "
-        },
+        }
       }
     ]
   end
