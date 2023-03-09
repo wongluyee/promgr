@@ -5,8 +5,8 @@
   </div>
   <div class="offcanvas-body" >
     <%= simple_form_for @meeting do |f| %>
-      <%= f.input :title %>
-      <%= f.input :meeting_date%>
+      <%= f.input :task_title , label: 'Title'  %>
+     <%= f.input :due_date, label: 'Meeting Date' %>
       <%= f.input :start_time %>
       <%= f.input :end_time %>
       <%= f.association :users,
