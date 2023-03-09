@@ -22,8 +22,6 @@ User.destroy_all
 puts 'Creating users...'
 users = []
 
-
-
 josh = User.new(
   name: "Josh",
   email: "josh@ng.com",
