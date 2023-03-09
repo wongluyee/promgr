@@ -47,4 +47,30 @@ class BuildSlackMessageService
       }
     ]
   end
+
+  def timelog(timesheet)
+    @timesheet = timesheet
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": " #{@timesheet.user.name} logged in at #{@timesheet.time_in} "
+        },
+      }
+    ]
+  end
+
+  def timeout(timesheet)
+    @timesheet = timesheet
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": " #{@timesheet.user.name} logged out at #{@timesheet.time_out} "
+        },
+      }
+    ]
+  end
 end
