@@ -21,6 +21,19 @@ class BuildSlackMessageService
     ]
   end
 
+  def task_done_msg(task)
+    @task = task
+    [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": ":fireworks: *Task Completed!*\n*#{task.task_title} marked as done,*\n\nContact your manager if you have any questions.\n\n<https://www.promgr.tech/dashboard|View task details>"
+        }
+      }
+    ]
+  end
+
   def clock_in_reminder
     [
       {
