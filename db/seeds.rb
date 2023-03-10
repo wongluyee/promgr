@@ -182,8 +182,7 @@ file = URI.open(photo_url)
 halston.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 halston.save
 
-users << User.where(is_manager: false)
-# user = users.sample
+# users << User.all
 
 puts 'Creating tasks...'
 tasks = []
@@ -192,31 +191,35 @@ Task.create!(
   description: "Finish the analysis and do review with manager",
   priority: "High",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
-  status: "In Progress"
+  status: "Done"
 )
+
 Task.create!(
   task_title: "Report of the warehouse financials",
   description: "audit and create report of warehouse financials",
   priority: "Medium",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
-  status: "In Progress"
+  status: "Done"
 )
-# Task.create!(
-#   task_title: "Audit of Amazon Video Financials",
-#   description: "Team up with cross functional team to audit amazon video financials",
-#   priority: "Medium",
-#   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
-#   status: "Done"
-# )
-# Task.create!(
-#   task_title: "Create summary report for CFO",
-#   description: "summarize quarter financials for CFO and present findings",
-#   priority: "High",
-#   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
-#   status: "In Progress"
-# )
+
 Task.create!(
-  task_title: "Quarterly report of CEO",
+  task_title: "Audit of Amazon Video Financials",
+  description: "Team up with cross functional team to audit amazon video financials",
+  priority: "Medium",
+  due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
+  status: "Done"
+)
+
+Task.create!(
+  task_title: "Create summary report for CFO",
+  description: "summarize quarter financials for CFO and present findings",
+  priority: "High",
+  due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
+  status: "Done"
+)
+
+Task.create!(
+  task_title: "Quarterly report for CEO",
   description: "create summary report for CEO and prepare presentation slides",
   priority: "High",
   due_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 31, format: :short),
@@ -298,7 +301,9 @@ end
 
 puts 'Creating timesheets...'
 today = Date.today
-User.all.each do |user|
+overtime_users = User.all.sample(5)
+
+overtime_users.each do |user|
   date = today - 1
   until date == today - 30
     if date.wday != 0 && date.wday != 6
@@ -307,7 +312,27 @@ User.all.each do |user|
         attendance: "working",
         comment: "Working on the project",
         time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
-        time_out: DateTime.parse("#{date} 09:#{rand(0...30)}:00")
+        time_out: DateTime.parse("#{date} 09:#{rand(20...50)}:00")
+      )
+      date -= 1
+    else
+      date -= 1
+    end
+  end
+end
+
+less_overtime_users = User.where.not(id: overtime_users.pluck(:id))
+
+less_overtime_users.each do |user|
+  date = today - 1
+  until date == today - 30
+    if date.wday != 0 && date.wday != 6
+      Timesheet.create!(
+        user: user,
+        attendance: "working",
+        comment: "Working on the project",
+        time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
+        time_out: DateTime.parse("#{date} 09:#{rand(0...20)}:00")
       )
       date -= 1
     else
