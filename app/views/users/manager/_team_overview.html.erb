@@ -35,16 +35,18 @@
         <% @users.each do |user| %>
           <% unless user.is_manager %>
             <tr>
-              <th class="no-sort" scope="row">
-                <div class="d-flex">
-                  <%= link_to user_path(user), class: "text-decoration-none text-light align-items-center" do %>
+              <th scope="row">
+                <%= link_to user_path(user), class: "text-decoration-none text-light align-items-center" do %>
+                  <div class="d-flex">
                     <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
-                  <% end %>
-                  <div>
-                    <span><%= link_to user.name,user_path(user), class: "text-decoration-none text-light" %></span><br>
-                    <h6 class="text-white-50 fw-lighter fst-italic" ><%= user.job_title %></h6>
+                    <div class="d-flex no-sort">
+                      <div>
+                        <span class="text-decoration-none text-light"><%= user.name %></span><br>
+                        <h6 class="text-white-50 fw-lighter fst-italic" ><%= user.job_title %></h6>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </th>
               <% employee_overtime = 0 %>
               <% user.timesheets.each do |timesheet| %>
