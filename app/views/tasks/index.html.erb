@@ -7,13 +7,18 @@
   <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
     <%= month_calendar attribute: :due_date, events:@tasks do |date, tasks| %>
+
+      <%= render 'tasks/addmeetingform', date: date  %>
       <div class="d-flex flex-column align-items-center" style= "width:130px">
-        <%= date.day %>
+        <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target=<%="#offcanvasExampleMeeting#{date}"%> aria-controls="offcanvasExample" style= "background-color: #3F456B; border:none; opacity:0.6;"> <%= date.day %></button>
+
         <% matching_meetings = @meetings.select { |m| m.due_date == date } %>
         <% if matching_meetings.any? %>
           <div class="dropdown">
             <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= matching_meetings.first.task_title %>
+
+              <%=matching_meetings.first.task_title%>
+
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <% matching_meetings.each do |meeting| %>
@@ -25,7 +30,9 @@
         <% if tasks.any? %>
           <div class="dropdown">
             <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-stopwatch"></i> <%= tasks.first.task_title %>
+
+              <i class="fa-solid fa-stopwatch"></i> <%=tasks.first.task_title%>
+
             </button>
             <% if tasks.count > 1 %>
               <p><%=tasks.count %> task</p>
