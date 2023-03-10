@@ -299,9 +299,11 @@ tasks = Task.all.shuffle
   )
 end
 
+main_users = [mehdi, joe, luyee]
+
 puts 'Creating timesheets...'
 today = Date.today
-overtime_users = User.all.sample(5)
+overtime_users = User.where(id: main_users.pluck(:id))
 
 overtime_users.each do |user|
   date = today - 1
@@ -312,7 +314,7 @@ overtime_users.each do |user|
         attendance: "working",
         comment: "Working on the project",
         time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
-        time_out: DateTime.parse("#{date} 09:#{rand(20...50)}:00")
+        time_out: DateTime.parse("#{date} 09:#{rand(10...30)}:00")
       )
       date -= 1
     else
@@ -321,9 +323,9 @@ overtime_users.each do |user|
   end
 end
 
-less_overtime_users = User.where.not(id: overtime_users.pluck(:id))
+no_overtime_users = User.where.not(id: main_users.pluck(:id))
 
-less_overtime_users.each do |user|
+no_overtime_users.each do |user|
   date = today - 1
   until date == today - 30
     if date.wday != 0 && date.wday != 6
@@ -331,8 +333,8 @@ less_overtime_users.each do |user|
         user: user,
         attendance: "working",
         comment: "Working on the project",
-        time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
-        time_out: DateTime.parse("#{date} 09:#{rand(0...20)}:00")
+        time_in: DateTime.parse("#{date} 00:00:00"),
+        time_out: DateTime.parse("#{date} 09:00:00")
       )
       date -= 1
     else
