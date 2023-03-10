@@ -21,9 +21,11 @@ class UsersController < ApplicationController
 
     # To display "Team overtime" bar chart
     overtime
-
     # To add new task
     @task = Task.new
+
+    # To add new meeting
+    @meeting = Meeting.new
 
     # To display "My Tasks Done" donut pie chart in employee dashboard
     individual_tasks(current_user)
@@ -58,6 +60,8 @@ class UsersController < ApplicationController
     @today = Date.today
     @timesheet_new = Timesheet.new
     @timesheet = current_user.timesheets.find_by(time_in: Date.today.all_day)
+    @timesheets = Timesheet.where(time_in: Date.today.all_day).where.not(user: current_user).distinct
+    @not_online = User.where.not(id: current_user).where.not(id: @timesheets.pluck(:user_id))
   end
 
   def check_attendance
@@ -66,6 +70,7 @@ class UsersController < ApplicationController
     today = Date.today
     @absent_employee = []
     # 2. Check the time_in record for today
+
     employees.each do |employee|
       ordered_timesheets = employee.timesheets.order(:time_in)
       if employee.timesheets != [] && ordered_timesheets.last.time_in.to_date != today
@@ -77,7 +82,7 @@ class UsersController < ApplicationController
     if @absent_employee.empty?
       @greeting_message = "All of your team members are here today!"
     else
-      @greeting_message = "#{@absent_employee.join(', ')} is not here yet."
+      @greeting_message = "#{@absent_employee.join(', ')} is not yet here."
     end
   end
 
