@@ -20,7 +20,7 @@
     cursor: pointer;
 
     &.no-sort {
-      pointer-events: none;
+      // pointer-events: none;
     }
     &::after,
     &::before {
