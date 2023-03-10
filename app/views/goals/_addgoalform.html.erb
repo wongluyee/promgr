@@ -1,4 +1,4 @@
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width:600px">
+<div class="offcanvas offcanvas-start boxes text-light fw-bold" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width:600px">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Goal</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -7,8 +7,6 @@
     <%= simple_form_for [current_user, @goal] do |f| %>
       <%= f.input :title %>
       <%= f.input :description ,as: :text, :input_html => {:rows => 8}%>
-
-
       <%# <%= f.input :user_ids, collection: @users,label: 'Assign employee to task',  as: :radio_buttons,input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-default btn-primary" %>
     <% end %>

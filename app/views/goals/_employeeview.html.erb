@@ -1,28 +1,26 @@
 <h1>Personal Goals</h1>
-    <div class="row ">
-    <div class="col goals-list p-5">
-
-
-       <div class="container d-flex flex-column gap-3">
-
-     <div><h1>My goals for 2023</h1> <button type="button" class="btn btn-md btn-primary " data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Add Goal</button></div>
-          <%= render 'goals/addgoalform' %>
+<div class="row ">
+  <div class="col goals-list p-5">
+    <div class="container d-flex flex-column gap-3">
+      <div>
+        <h1>My goals for 2023</h1>
+        <button type="button" class="btn btn-md btn-primary " data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Add Goal</button></div>
+      <%= render 'goals/addgoalform' %>
       <% @goals.each do |goal|%>
-      <div class="container">
-      <div class="row rounded text-dark bg-light mb-2">
-         <div class="col d-flex align-items-center justify-content-between p-1">
-            <div><%=goal.title%></div>  <div><%=goal.status%></div>
-         </div>
-      </div>
-      <div class="row rounded text-dark bg-light" style="height:200px">
-         <div class="col d-flex align-items-center justify-content-between p-1">
+        <div class="container">
+          <div class="row rounded text-dark bg-light mb-2">
+            <div class="col d-flex align-items-center justify-content-between p-1 goal-display text-light">
+              <div><%=goal.title%></div>
+              <div><%=goal.status%></div>
+            </div>
+          </div>
+          <div class="row rounded text-dark bg-light" style="height:200px">
+            <div class="col d-flex align-items-center justify-content-between p-1 goal-display text-light">
               <p> <%=goal.description%></p>
-         </div>
-      </div>
+            </div>
+          </div>
         </div>
       <% end%>
-
     </div>
-      </div>
-
-    </div>
+  </div>
+</div>
