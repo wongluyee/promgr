@@ -3,6 +3,8 @@ class TasksController < ApplicationController
     @tasks = policy_scope(Task)
     @user = current_user
     @meetings = Meeting.all
+    @meeting = Meeting.new
+    @users = User.all
   end
 
   def new

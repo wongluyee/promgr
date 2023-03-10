@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
       # SlackClient.client.chat_postMessage(channel: '#general', blocks: BuildSlackMessageService.new(@task).call)
       redirect_to users_path
     else
-      render "users/dashboard", status: :unprocessable_entity
+      render "users/dashboard", status: :unprocessable_entity, locals: { timesheet_new: Timesheet.new }
     end
   end
 
