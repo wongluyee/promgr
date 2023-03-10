@@ -1,21 +1,24 @@
-<div class="offcanvas offcanvas-start" tabindex="-1" id=<%="taskmodel#{task.id}"%> aria-labelledby="offcanvasExampleLabel" style="width:600px">
+<div class="offcanvas offcanvas-start" tabindex="-1" id=<%= "taskmodel#{task.id}" %> aria-labelledby="offcanvasExampleLabel" style="width:600px">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Task</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <div class="remove-ticks-bootstrap">
-    <%= simple_form_for task do |f| %>
-      <%= f.input :task_title %>
-      <%= f.input :description ,as: :text, :input_html => {:rows => 8}%>
-      <%= f.input :due_date %>
-     <%= f.association :users,
+      <%= simple_form_for task do |f| %>
+        <%= f.input :task_title %>
+        <%= f.input :description ,as: :text, :input_html => {:rows => 8} %>
+        <%= f.input :due_date, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+        <%= f.association :users,
           as: :check_boxes,label: 'Assign employee to task',
           input_html: { class: "tag-selector" },
           item_wrapper_class: 'tag-item',
           :multiple => true %>
-      <%= f.button :submit, class: "btn btn-button-color" %>
-    <% end %>
+        <%= f.button :submit, class: "btn btn-button-color" %>
+      <% end %>
     </div>
   </div>
 </div>
