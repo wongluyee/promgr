@@ -1,4 +1,7 @@
 .table-body {
+  th::after {
+    display: none;
+  }
 }
 
 .my-custom-scrollbar {
@@ -13,13 +16,25 @@
 
 .table-dark {
   --bs-table-bg: #3F456B;
+
+  th:first-child {
+    &::after {
+      display: none;
+    }
+  }
 }
 
 .sortable {
   th {
     cursor: pointer;
 
-    &.no-sort {
+    // &::after {
+    //   display: none;
+    // }
+    .no-sort {
+      &::after {
+        display: none;
+      }
       pointer-events: none;
     }
     &::after,
