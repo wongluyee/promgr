@@ -1,4 +1,4 @@
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExampleMeeting" aria-labelledby="offcanvasExampleLabel" style="width:600px">
+<div class="offcanvas offcanvas-start boxes text-light fw-bold" tabindex="-1" id="offcanvasExampleMeeting" aria-labelledby="offcanvasExampleLabel" style="width:600px">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Meeting</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -6,9 +6,14 @@
   <div class="offcanvas-body" >
     <%= simple_form_for @meeting do |f| %>
       <%= f.input :task_title , label: 'Title'  %>
-     <%= f.input :due_date, label: 'Meeting Date' %>
-      <%= f.input :start_time %>
-      <%= f.input :end_time %>
+      <%= f.input :start_time, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+      <%= f.input :end_time, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
       <%= f.association :users,
           as: :check_boxes,label: 'Assign employee to meeting',
           input_html: { class: "tag-selector" },

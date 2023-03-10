@@ -1,8 +1,26 @@
 <div class="boxes div1 p-3 text-light mt-4 ms-5 d-flex flex-column justify-content-center">
   <h4>Hello <%= current_user.name %>,</h4>
-  <% if current_user.is_manager? %>
-    <p><%= @greeting_message %></p>
-  <% else %>
-    <p><%= @greeting_message_employee %></p>
-  <% end %>
+    <% if current_user.is_manager? %>
+      <p><%= @greeting_message %></p>
+    <% else %>
+      <p><%= @greeting_message_employee %></p>
+    <% end %>
+  <div class="d-flex flex-row">
+    <% @timesheets.each do |timesheet| %>
+    <div class="avatar position-relative">
+      <%= cl_image_tag timesheet.user.photo.key, class: "avatar-online shadow position-relative" %>
+      <span class="position-absolute top-30 start-60 translate-middle bg-success p-2 rounded-circle">
+        <span class="visually-hidden">New alerts</span>
+      </span>
+    </div>
+    <% end %>
+    <% @not_online.each do |user| %>
+    <div class="avatar position-relative">
+     <%= cl_image_tag user.photo.key, class: "avatar-online shadow opacity-50" %>
+      <span class="position-absolute top-30 start-60 translate-middle p-2 rounded-circle offline">
+      <span class="visually-hidden">New alerts</span>
+      </span>
+    </div>
+    <% end %>
+  </div>
 </div>

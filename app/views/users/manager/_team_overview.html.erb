@@ -2,11 +2,11 @@
   <div class= "d-flex justify-content-between align-items-center mb-4">
     <h5>Team Overview</h5>
     <div>
-    <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i> Add Task</button>
+      <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i> Add Task</button>
       <button type="button" class="btn btn-button-color" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExampleMeeting" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i> Add Meeting</button>
-      </div>
+    </div>
     <%= render 'users/addtaskform' %>
-     <%= render 'users/addmeetingform' %>
+    <%= render 'users/addmeetingform' %>
   </div>
   <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table text-light sortable">
@@ -35,16 +35,18 @@
         <% @users.each do |user| %>
           <% unless user.is_manager %>
             <tr>
-              <th class="no-sort" scope="row">
-                <div class="d-flex">
-                  <%= link_to user_path(user), class: "text-decoration-none text-light" do %>
+              <th scope="row">
+                <%= link_to user_path(user), class: "text-decoration-none text-light align-items-center" do %>
+                  <div class="d-flex">
                     <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow me-3" %>
-                  <% end %>
-                  <div>
-                    <span><%= link_to user.name,user_path(user), class: "text-decoration-none text-light" %></span><br>
-                    <h6 class="text-white-50 fw-lighter fst-italic" ><%= user.job_title %></h6>
+                    <div class="d-flex no-sort">
+                      <div>
+                        <span class="text-decoration-none text-light"><%= user.name %></span><br>
+                        <h6 class="text-white-50 fw-lighter fst-italic" ><%= user.job_title %></h6>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </th>
               <% employee_overtime = 0 %>
               <% user.timesheets.each do |timesheet| %>

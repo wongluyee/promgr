@@ -10,11 +10,14 @@ application.register("add-task", AddTaskController)
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import TimerController from "./timer_controller"
-application.register("timer", TimerController)
-
 import RemovalsController from "./removals_controller"
 application.register("removals", RemovalsController)
+
+import TimerController from "./timer_controller"
+application.register("timer", TimerController)

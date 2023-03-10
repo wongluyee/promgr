@@ -1,6 +1,6 @@
 <div class="sidebar col-2 position-sticky top-0 shadow text-light">
   <div class="d-flex align-items-center mt-3 ms-3 mb-4">
-    <%= cl_image_tag current_user.photo.key, class: "avatar-bordered" %>
+    <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
     <div class="info ms-2">
       <h5 class="username m-0"><%= current_user.name %></h5>
       <p class="jobtitle m-0"><%= current_user.job_title %></p>
@@ -21,7 +21,7 @@
           <h5 class="menu-items mb-3"><i class="fa-solid fa-trophy"></i> My Goals</h5>
         <% end %>
         <%= link_to user_timesheets_path(current_user), class: "text-decoration-none text-light" do  %>
-          <h6 class="menu-items mb-3"><i class="fa-regular fa-clock"></i> My Timesheets</h6>
+          <h5 class="menu-items mb-3"><i class="fa-regular fa-clock"></i> My Timesheets</h5>
         <% end %>
       </div>
       <div class="logout">
