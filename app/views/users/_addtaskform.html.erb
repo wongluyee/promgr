@@ -7,7 +7,10 @@
     <%= simple_form_for @task do |f| %>
       <%= f.input :task_title %>
       <%= f.input :description ,as: :text, :input_html => {:rows => 8}%>
-      <%= f.input :due_date %>
+      <%= f.input :due_date, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
       <%= f.association :users,
           as: :check_boxes,label: 'Assign employee to task',
           input_html: { class: "tag-selector" },

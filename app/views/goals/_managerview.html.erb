@@ -1,53 +1,41 @@
-<h1><%=@user.name %> Goals</h1>
-    <div class="row ">
-    <div class="col goals-list p-5">
-
-
-       <div class="container d-flex flex-column gap-3">
-
-     <div><h1><%=@user.name %> goals for 2023</h1>
-      <% @goals.each do |goal|%>
-          <button class="btn btn-dark my-2" type="button" data-bs-toggle="offcanvas" data-bs-target=<%="#goal#{goal.id}"%> aria-controls="offcanvasExample">
-      Review Goal
-      </button>
-
-          <div class="offcanvas offcanvas-start" tabindex="-1" id=<%="goal#{goal.id}"%> aria-labelledby="offcanvasExampleLabel" style="width:600px">
+<h1><%= @user.name %> Goals</h1>
+<div class="row ">
+  <div class="col goals-list p-5">
+    <div class="container d-flex flex-column gap-3">
+      <div>
+        <h1><%= @user.name %> goals for 2023</h1>
+        <% @goals.each do |goal| %>
+          <button class="btn btn-dark my-2" type="button" data-bs-toggle="offcanvas" data-bs-target=<%= "#goal#{goal.id}" %> aria-controls="offcanvasExample">
+            Review Goal
+          </button>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id=<%= "goal#{goal.id}" %> aria-labelledby="offcanvasExampleLabel" style="width:600px">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasExampleLabel">Review Goal</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" >
-              <p>Goal:<%=goal.title%></p>
+              <p>Goal:<%= goal.title %></p>
               <%= simple_form_for goal do |f| %>
-
-                <%= f.input :comments ,as: :text, :input_html => {:rows => 8}%>
-
-
+                <%= f.input :comments ,as: :text, :input_html => {:rows => 8} %>
                 <%= f.select :status, Goal.statuses.map { |k, v| [v, k] }, {}, include_blank: false %>
                 <%= f.button :submit, class: "btn btn-default btn-primary" %>
               <% end %>
             </div>
           </div>
-
-      <div class="container">
-
-      <div class="row rounded text-dark bg-light mb-2">
-
-
-         <div class="col d-flex align-items-center justify-content-between p-1">
-
-            <div><%=goal.title%></div>  <div><%=goal.status%></div>
-         </div>
+          <div class="container">
+            <div class="row rounded text-dark bg-light mb-2">
+              <div class="col d-flex align-items-center justify-content-between p-1">
+                <div><%= goal.title %></div>
+                <div><%= goal.status %></div>
+              </div>
+            </div>
+            <div class="row rounded text-dark bg-light" style="height:200px">
+              <div class="col d-flex align-items-center justify-content-between p-1">
+                <p><%= goal.description %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="row rounded text-dark bg-light" style="height:200px">
-         <div class="col d-flex align-items-center justify-content-between p-1">
-              <p> <%=goal.description%></p>
-         </div>
-      </div>
-        </div>
-      <% end%>
-
     </div>
-      </div>
-
-    </div>
+  </div>

@@ -6,36 +6,36 @@
   <% end %>
   <div class="col mx-5 my-4 text-light">
     <h1>Calendar/Tasks</h1>
-   <%= month_calendar attribute: :due_date, events:@tasks do |date, tasks| %>
+    <%= month_calendar attribute: :due_date, events:@tasks do |date, tasks| %>
       <div class="d-flex flex-column align-items-center" style= "width:130px">
         <%= date.day %>
-             <% matching_meetings = @meetings.select { |m| m.due_date == date } %>
-              <% if matching_meetings.any? %>
-              <div class="dropdown">
-        <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <%=matching_meetings.first.task_title%>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <% matching_meetings.each do |meeting| %>
+        <% matching_meetings = @meetings.select { |m| m.due_date == date } %>
+        <% if matching_meetings.any? %>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= matching_meetings.first.task_title %>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <% matching_meetings.each do |meeting| %>
                 <li><a class="dropdown-item" href="#"><%= meeting.task_title %></a></li>
               <% end %>
-        </ul>
-      </div>
-              <% end %>
-        <% if tasks.any? %>
-        <div class="dropdown">
-  <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-   <i class="fa-solid fa-stopwatch"></i> <%=tasks.first.task_title%>
-  </button>
-          <% if tasks.count > 1 %>
-          <p><%=tasks.count %> task</p>
-          <% end %>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <% tasks.each do |task| %>
-           <li><a class="dropdown-item" href="#"><%= task.task_title %></a></li>
+            </ul>
+          </div>
         <% end %>
-  </ul>
-</div>
+        <% if tasks.any? %>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle text-truncate text-light" style= "width:130px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-stopwatch"></i> <%= tasks.first.task_title %>
+            </button>
+            <% if tasks.count > 1 %>
+              <p><%=tasks.count %> task</p>
+            <% end %>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <% tasks.each do |task| %>
+                <li><a class="dropdown-item" href="#"><%= task.task_title %></a></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
       </div>
     <% end %>
@@ -61,7 +61,7 @@
                   <% end %>
                 </div>
                 <div>
-                  <button class="btn btn-outline-light mx-1 rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}"%> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
+                  <button class="btn btn-outline-light mx-1 rounded-pill" data-bs-toggle="offcanvas" data-bs-target=<%= "#taskmodel#{task.id}" %> aria-controls="offcanvasExample"><i class="fa-solid fa-pen"></i></button>
                 </div>
                 <div>
                   <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-light rounded-pill" do %>
