@@ -1,5 +1,5 @@
 <div class="div2 mt-4 mb-0 me-5 p-3 boxes text-light d-flex flex-column justify-content-center align-items-center">
-  <h5>Working Time</h5>
+  <h4>Working Time</h4>
   <div class="clock-in-out-button">
     <% if @timesheet == nil %>
       <%= render 'timesheets/clock_in' %>
@@ -10,7 +10,7 @@
       <% if ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 3600).abs < 1 %>
         <h5>You worked for <%= ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 60).abs.round %> minutes</h5>
       <% else %>
-      <h5>You worked for <%= ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 3600).abs.round %> hours</h5>
+      <h5>You worked for <%= ((@timesheet.time_in.to_time - @timesheet.time_out.to_time) / 3600).abs.round(1) %> hours</h5>
       <% end %>
     <% end %>
   </div>
