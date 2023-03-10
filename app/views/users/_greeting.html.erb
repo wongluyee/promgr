@@ -8,18 +8,18 @@
   <div class="d-flex flex-row">
     <% @timesheets.each do |timesheet| %>
     <div class="avatar position-relative">
-      <%# <% user.timesheets.each do |timesheet| %>
-        <%= cl_image_tag timesheet.user.photo.key, class: "avatar-bordered shadow position-relative" %>
-         <span class="position-absolute top-30 start-60 translate-middle p-2 bg-success border border-light rounded-circle">
-    <span class="visually-hidden">New alerts</span>
-  </span>
+      <%= cl_image_tag timesheet.user.photo.key, class: "avatar-online shadow position-relative" %>
+      <span class="position-absolute top-30 start-60 translate-middle bg-success p-2 rounded-circle">
+        <span class="visually-hidden">New alerts</span>
+      </span>
     </div>
     <% end %>
     <% @not_online.each do |user| %>
     <div class="avatar position-relative">
-     <%= cl_image_tag user.photo.key, class: "avatar-bordered shadow opacity-50" %>
-      <span class="position-absolute top-30 start-60 translate-middle p-2 bg-danger border border-light rounded-circle">
-    <span class="visually-hidden">New alerts</span>
+     <%= cl_image_tag user.photo.key, class: "avatar-online shadow opacity-50" %>
+      <span class="position-absolute top-30 start-60 translate-middle p-2 rounded-circle offline">
+      <span class="visually-hidden">New alerts</span>
+      </span>
     </div>
     <% end %>
   </div>
