@@ -6,7 +6,7 @@
   <div class="offcanvas-body" >
 
     <%= simple_form_for @meeting, namespace: "meeting-#{date}" do |f| %>
-      <%= f.input :task_title , label: 'Title'  %>
+      <%= f.input :task_title , label: 'Title' %>
       <%= f.input :due_date, label: 'Meeting Date', input_html: { :value => date }, html5:true %>
       <%= f.input :start_time %>
       <%= f.input :end_time %>
