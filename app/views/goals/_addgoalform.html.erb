@@ -6,7 +6,7 @@
   <div class="offcanvas-body" >
     <%= simple_form_for [current_user, @goal] do |f| %>
       <%= f.input :title %>
-      <%= f.input :description ,as: :text, :input_html => {:rows => 8}%>
+      <%= f.input :description ,as: :text, :input_html => {:rows => 8} %>
       <%# <%= f.input :user_ids, collection: @users,label: 'Assign employee to task',  as: :radio_buttons,input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-default btn-primary" %>
     <% end %>
