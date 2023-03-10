@@ -8,3 +8,12 @@
   position:absolute;
   bottom: 0;
 }
+
+.menu-items {
+  padding: 12px 3px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #4B4F6C;
+    border-radius: 25px;
+  }
+}

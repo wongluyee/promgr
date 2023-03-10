@@ -2,17 +2,17 @@
   <div class="d-flex align-items-center mt-3 ms-3 mb-4">
     <%= image_tag "https://avatars.githubusercontent.com/u/97093935?v=4", class: "avatar-large shadow" %>
     <div class="info ms-2">
-      <h5 class="username m-0"><%= current_user.name %></h5>
+      <h4 class="username m-0"><%= current_user.name %></h4>
       <p class="jobtitle m-0"><%= current_user.job_title %></p>
     </div>
   </div>
   <div class="side-bar-items m-3">
     <div>
       <%= link_to root_path, class: "text-decoration-none text-light" do  %>
-        <h5 class="menu-items mb-5"><i class="fa-solid fa-house"></i> Home</h5>
+        <h5 class="menu-items mb-4"><i class="fa-solid fa-house"></i> Home</h5>
       <% end %>
       <%= link_to tasks_path, class: "text-decoration-none text-light" do  %>
-        <h5 class="menu-items mb-5"><i class="fa-regular fa-calendar"></i> Calendar/Tasks</h5>
+        <h5 class="menu-items mb-4"><i class="fa-regular fa-calendar"></i> Calendar/Tasks</h5>
       <% end %>
       <%#= link_to chatroom_path(@chatroom), class: "text-decoration-none text-dark" do  %>
         <%# <h6 class="menu-items mb-3"><i class="fa-regular fa-comments"></i> Message</h6> %>
