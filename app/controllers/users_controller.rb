@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     skip_authorization
     @users = policy_scope(User)
 
-
     # To display greeting message to manager
     check_attendance
 
@@ -25,8 +24,8 @@ class UsersController < ApplicationController
     # To add new task
     @task = Task.new
 
-     # To add new meeting
-     @meeting = Meeting.new
+    # To add new meeting
+    @meeting = Meeting.new
 
     # To display "My Tasks Done" donut pie chart in employee dashboard
     individual_tasks(current_user)
