@@ -306,14 +306,18 @@ overtime_users = User.all.sample(5)
 overtime_users.each do |user|
   date = today - 1
   until date == today - 30
-    Timesheet.create!(
-      user: user,
-      attendance: "working",
-      comment: "Working on the project",
-      time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
-      time_out: DateTime.parse("#{date} 09:#{rand(20...50)}:00")
-    )
-    date -= 1
+    if date.wday != 0 && date.wday != 6
+      Timesheet.create!(
+        user: user,
+        attendance: "working",
+        comment: "Working on the project",
+        time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
+        time_out: DateTime.parse("#{date} 09:#{rand(20...50)}:00")
+      )
+      date -= 1
+    else
+      date -= 1
+    end
   end
 end
 
@@ -322,14 +326,18 @@ less_overtime_users = User.where.not(id: overtime_users.pluck(:id))
 less_overtime_users.each do |user|
   date = today - 1
   until date == today - 30
-    Timesheet.create!(
-      user: user,
-      attendance: "working",
-      comment: "Working on the project",
-      time_in: DateTime.parse("#{date} 00:#{rand(0...5)}:00"),
-      time_out: DateTime.parse("#{date} 09:#{rand(0...20)}:00")
-    )
-    date -= 1
+    if date.wday != 0 && date.wday != 6
+      Timesheet.create!(
+        user: user,
+        attendance: "working",
+        comment: "Working on the project",
+        time_in: DateTime.parse("#{date} 00:#{rand(0...15)}:00"),
+        time_out: DateTime.parse("#{date} 09:#{rand(0...20)}:00")
+      )
+      date -= 1
+    else
+      date -= 1
+    end
   end
 end
 

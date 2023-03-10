@@ -18,7 +18,19 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+.offline{
+  margin-left: -6px;
+  margin-top: 8px;
+  border: #3F456B 3px solid;
+  background-color: #707070;
+}
 .rounded-circle {
   margin-left: -6px;
   margin-top: 8px;
+  border: #3F456B 4px solid;
+}
+.avatar-online {
+  width: 56px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
