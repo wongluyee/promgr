@@ -15,16 +15,16 @@ App home: https://promgr.herokuapp.com/users/sign_in
 
 Manager
 User: josh@ng.com
-password:12345678
+pW:12345678
 
 Employee
-User: josh@ng.com
-password:12345678
+User: joe@luc.com
+pW:12345678
 
 
 ## Features
 
-Manager
+<u>Manager</u>
 
 
 
