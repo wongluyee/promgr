@@ -13,7 +13,7 @@ With proMGR, managing teams become easy. Summarized data for team performance is
 App home: https://promgr.herokuapp.com/users/sign_in
 
 
-Manager
+Manager </br>
 User: josh@ng.com
 pW:12345678
 
@@ -24,7 +24,7 @@ pW:12345678
 
 ## Features
 
-<u>Manager</u>
+<ins>Manager</ins>
 
 
 
