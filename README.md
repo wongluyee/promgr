@@ -1,13 +1,31 @@
 # ProMGR
 
-Project description goes here
+<b>Description:</b>
+Its an app that allows managers to manage their teams easily. 
 
-_DROP SCREENSHOT HERE_
-<br>
+Line managers in large corporations are responsible for delegating tasks efficiently, managing team performance(helping members complete tasks and achieve perfomance goals) and monitor team activity.
+
+The problem is that data needed to make management decisions is typically segregated across multiple apps.For example, if a manager with a team of 10 wants to assign a task to someone appropriate and with few ongoing tasks, he has to check a trello board with over a 100 tasks displayed and check individual teamsheets to get the overtime information. Sifting through these apps takes time and the workflow process is not smooth, the larger the team becomes the time taken to make decisions is compounded.
+
+With proMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
+
+## Usage
 App home: https://promgr.herokuapp.com/users/sign_in
 
+
+Manager
 User: josh@ng.com
 password:12345678
+
+Employee
+User: josh@ng.com
+password:12345678
+
+
+## Features
+
+Manager
+
 
 
 
