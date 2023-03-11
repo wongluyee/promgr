@@ -9,6 +9,9 @@ The problem is that data needed to make management decisions is typically segreg
 
 With proMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
 
+
+![screenshot](https://github.com/joshnsw/joshportfolio/blob/master/assets/promgrcalendar.png)
+
 ## Usage
 App home: https://promgr.herokuapp.com/users/sign_in
 
