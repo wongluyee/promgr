@@ -3,13 +3,13 @@
 <b>Description:</b>
 Its an app that allows managers to manage their teams easily. 
 
-Line managers in large corporations are responsible for delegating tasks efficiently, managing team performance(helping members complete tasks and achieve perfomance goals) and monitor team activity.
+<b>Target User:</b>Line managers in large corporations are responsible for delegating tasks efficiently, managing team performance(helping members complete tasks and achieve perfomance goals) and monitor team activity.
 
-The problem is that data needed to make management decisions is typically segregated across multiple apps.For example, if a manager with a team of 10 wants to assign a task to someone appropriate and with few ongoing tasks, he has to check a trello board with over a 100 tasks displayed and check individual teamsheets to get the overtime information. Sifting through these apps takes time and the workflow process is not smooth, the larger the team becomes the time taken to make decisions is compounded.
+<b>Problem:</b>The problem is that data needed to make management decisions is typically segregated across multiple apps.For example, if a manager with a team of 10 wants to assign a task to someone appropriate and with few ongoing tasks, he has to check a trello board with over a 100 tasks displayed and check individual teamsheets to get the overtime information. Sifting through these apps takes time and the workflow process is not smooth, the larger the team becomes the time taken to make decisions is compounded.
 
-With proMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
+<b>Solution:</b>With proMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
 
-The development process first started with brainstorming user needs, followed by protoyping UI design and user journeys in Figma, then breaking down tasks and listing them in Trello. Our team also ensured minimal bugs by reviewing code before pushing to Github.
+<b>Development Process:</b>The development process first started with brainstorming user needs, followed by protoyping UI design and user journeys in Figma, then breaking down tasks and listing them in Trello. Our team also ensured minimal bugs by reviewing code before pushing to Github.
 
 <ins>Dashboard Page</ins>
 ![screenshot](https://github.com/joshnsw/joshportfolio/blob/master/assets/promgrdashboard.png)
