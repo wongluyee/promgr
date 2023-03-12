@@ -9,6 +9,8 @@ The problem is that data needed to make management decisions is typically segreg
 
 With proMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
 
+The development process first started with brainstorming user needs, followed by protoyping UI design and user journeys in Figma, then breaking down tasks and listing them in Trello. Our team also ensured minimal bugs by reviewing code before pushing to Github.
+
 <ins>Dashboard Page</ins>
 ![screenshot](https://github.com/joshnsw/joshportfolio/blob/master/assets/promgrdashboard.png)
 
