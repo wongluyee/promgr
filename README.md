@@ -1,15 +1,19 @@
 # ProMGR
 
 <b>Description:</b>
-Its an app that allows managers to manage their teams easily. 
+It is an app that allows managers to manage their teams easily. 
 
-<b>Target User:</b>Line managers in large corporations are responsible for delegating tasks efficiently, managing team performance(helping members complete tasks and achieve perfomance goals) and monitor team activity.
+<b>Target User:</b>
+Line managers in large corporations are responsible for delegating tasks efficiently, managing team performance (helping members complete tasks and achieve perfomance goals) and monitor team activity.
 
-<b>Problem:</b>The problem is that data needed to make management decisions is typically segregated across multiple apps.For example, if a manager with a team of 10 wants to assign a task to someone appropriate and with few ongoing tasks, he has to check a trello board with over a 100 tasks displayed and check individual teamsheets to get the overtime information. Sifting through these apps takes time and the workflow process is not smooth, the larger the team becomes the time taken to make decisions is compounded.
+<b>Problem:</b>
+The problem is that data needed to make management decisions is typically segregated across multiple apps. For example, if a manager with a team of 10 wants to assign a task to someone appropriate and with few ongoing tasks, he has to check a Trello board with over 100 tasks displayed and check individual timesheets to get the overtime information. Shifting through these apps takes time and the workflow process is not smooth, the larger the team becomes the time taken to make decisions is compounded.
 
-<b>Solution:</b>With proMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
+<b>Solution:</b>
+With ProMGR, managing teams become easy. Summarized data for team performance is available on the dashboard, allowing managers to plan activities and monitor performance efficiently.
 
-<b>Development Process:</b>The development process first started with brainstorming user needs, followed by protoyping UI design and user journeys in Figma, then breaking down tasks and listing them in Trello. Our team also ensured minimal bugs by reviewing code before pushing to Github.
+<b>Development Process:</b>
+The development process first started with brainstorming user needs, followed by protoyping UI design and user journeys in Figma, then breaking down tasks and listing them in Trello. Our team also ensured minimal bugs by reviewing code before pushing to Github.
 
 <ins>Dashboard Page</ins>
 ![screenshot](https://github.com/joshnsw/joshportfolio/blob/master/assets/promgrdashboard.png)
@@ -23,24 +27,23 @@ App home: https://promgr.herokuapp.com/users/sign_in
 
 Manager </br>
 User: josh@ng.com
-pW:12345678
+PW: 12345678
 
 Employee </br>
 User: joe@luc.com
-pW:12345678
+PW: 12345678
 
 
 ## Features
 
 <ins>Manager</ins>
-- Dashboard [Summary Data] : Employee tasks, overtime, done tasks are displayed in this page, making it easy to get an overview of team performance.
-- Calendar[Plan meetings] : Added meetings and tasks will be displayed here, allowing you to plan meetings easily in chronological order. 
+- Dashboard [Summary Data]: Employee tasks, overtime, done tasks are displayed in this page, making it easy to get an overview of team performance.
+- Calendar [Plan meetings]: Added meetings and tasks will be displayed here, allowing you to plan meetings easily in chronological order. 
 
 
 <ins>Employee</ins>
 
-- Add Goal/Tasks : Add your goals and tasks here any your manager will be able to see your work activities.
-
+- Add Goal/Tasks: Add your goals and tasks here any your manager will be able to see your work activities.
 - Clock in/clock out: Clock in clock out function allows you to easily track your time.
 
 
