@@ -68,6 +68,7 @@ touch .env
 Inside `.env`, set these variables. For any APIs, see group Slack channel.
 ```
 CLOUDINARY_URL=your_own_cloudinary_url_key
+SLACK_API_TOKEN=your_own_slack_api_token
 ```
 
 ### DB Setup
