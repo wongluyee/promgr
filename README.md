@@ -36,16 +36,18 @@ PW: 12345678
 
 ## Features
 
-<ins>Manager</ins>
+<b>Manager</b>
 - Dashboard [Summary Data]: Employee tasks, overtime, done tasks are displayed in this page, making it easy to get an overview of team performance.
 - Calendar [Plan meetings]: Added meetings and tasks will be displayed here, allowing you to plan meetings easily in chronological order. 
 
 
-<ins>Employee</ins>
+<b>Employee</b>
 
 - Add Goal/Tasks: Add your goals and tasks here any your manager will be able to see your work activities.
 - Clock in/clock out: Clock in clock out function allows you to easily track your time.
 
+<b>Highlight</b>
+- Get messages on Slack when someone clock in/out, a new task added and a task marked as done.
 
 
 ## Getting Started
